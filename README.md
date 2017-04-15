@@ -1,2 +1,2 @@
-# WebDash
+# Tabula
 Web dashboard for comp
