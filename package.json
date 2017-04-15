@@ -1,0 +1,29 @@
+{
+  "name": "tabula",
+  "version": "1.0.0",
+  "description": "Web Dashboard for frc 2729",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/2729StormRobotics/Tabula.git"
+  },
+  "keywords": [
+    "web",
+    "frc",
+    "dashboard",
+    "storm",
+    "2729"
+  ],
+  "author": "Storm Robotics, atf1999 (Tom Orth)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/2729StormRobotics/Tabula/issues"
+  },
+  "homepage": "https://github.com/2729StormRobotics/Tabula#readme",
+  "dependencies": {
+    "electron": "^1.6.2"
+  }
+}
