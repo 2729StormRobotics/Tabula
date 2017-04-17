@@ -1,10 +1,10 @@
-function test(){
-    //var testMessage = networktables.getNumber("t_testMessage", "NULL");
-
+(function test(){
+    var testMessage = NetworkTables.getValue("t_testMessage", "NULL");
+    console.log(testMessage);
+    NetworkTables.putValue("t_servertest", "ft");
     var header = document.createElement("h1");
-    var text = document.createTextNode("textMessage");
+    var text = document.createTextNode(testMessage);
     header.appendChild(text);
-    console.log("daf");
-    document.getElementsByTagName('body')[0].appendChild(header);
-}
-test();
+
+    document.body.appendChild(header);
+})();

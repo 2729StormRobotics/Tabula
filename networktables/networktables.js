@@ -1,6 +1,6 @@
 var NetworkTables;
 (function (NetworkTables) {
-    let keys = {}, connectionListeners = [], connected = false, globalListeners = [], keyListeners = {}, robotAddress = "127.0.0.1";
+    let keys = {}, connectionListeners = [], connected = false, globalListeners = [], keyListeners = {}, robotAddress = "localhost"; //Changed from 127.0.0.1
     ipc.send('ready');
     ipc.on('connected', (ev, con) => {
         connected = con;
