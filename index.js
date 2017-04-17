@@ -1,3 +1,8 @@
+// Sets function to be called when robot dis/connects
+NetworkTables.addRobotConnectionListener(onRobotConnection, false);
+
+// Sets function to be called when any NetworkTables key/value changes
+NetworkTables.addGlobalListener(console.log, true);
 (function test(){
     var testMessage = NetworkTables.getValue("t_testMessage", "NULL");
     console.log(testMessage);
@@ -7,6 +12,7 @@
     header.appendChild(text);
 
     document.body.appendChild(header);
+    NetworkTables.putValue("t_testMessage", "ftw");
 })();
 
 NetworkTables.addKeyListener("t_testMessage", function(key, value, isNew){
@@ -19,3 +25,9 @@ NetworkTables.addKeyListener("t_testMessage", function(key, value, isNew){
 
   document.body.appendChild(header);
 }, true);
+
+function onRobotConnection(connected){
+    if(!connected && !noElectron){
+        ipc.send('connect', 'localhost');
+    }
+}
