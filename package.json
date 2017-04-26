@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/2729StormRobotics/Tabula#readme",
   "devDependencies": {
+    "electron": "^1.6.2",
     "es6-shim": "^0.34.0",
     "ts-loader": "^0.7.2",
     "typescript": "^1.7.3",

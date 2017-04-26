@@ -1,3 +1,7 @@
+'use strict';
+
+angular.module('try', ['textBlock']);
+/*
 // Sets function to be called when robot dis/connects
 NetworkTables.addRobotConnectionListener(onRobotConnection, false);
 
@@ -15,6 +19,7 @@ NetworkTables.addGlobalListener(console.log, true);
     NetworkTables.putValue("t_testMessage", "ftw");
 })();
 
+
 NetworkTables.addKeyListener("t_testMessage", function(key, value, isNew){
   var testMessage = value;
   console.log("recieved change");
@@ -31,3 +36,4 @@ function onRobotConnection(connected){
         ipc.send('connect', 'localhost');
     }
 }
+*/
