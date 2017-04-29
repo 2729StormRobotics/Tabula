@@ -9,14 +9,12 @@
   <script src="loadIPC.js"></script>
   <script src="networktables/networktables.js"></script>
   <script src="./node_modules/angular/angular.js"></script>
+  <script src="./dashboard/index.js"></script>
+  <script src = "./dashboard/dashboard.js"></script>
 
-  <script src="index.js"></script>
-
-  <script src = "./text-block/text-block.module.js"></script>
-  <script src = "./text-block/text-block.component.js"></script>
-
-  <div ng-app="textBlock" ng-controller='TextBlockController'>
-
+  <div ng-app="dashboard" ng-controller='DashboardController'>
+      <motor-speed nt-key="t_leftMotor" name="leftMotor"></motor-speed>
+      <motor-speed nt-key="t_rightMotor" name="rightMotor"></motor-speed>
   </div>
 </body>
 </html>
