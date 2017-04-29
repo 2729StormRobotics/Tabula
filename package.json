@@ -24,23 +24,8 @@
     "url": "https://github.com/2729StormRobotics/Tabula/issues"
   },
   "homepage": "https://github.com/2729StormRobotics/Tabula#readme",
-  "devDependencies": {
-    "electron": "^1.6.2",
-    "es6-shim": "^0.34.0",
-    "ts-loader": "^0.7.2",
-    "typescript": "^1.7.3",
-    "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.0"
-  },
   "dependencies": {
-    "angular2": "^2.0.0-beta.21",
-    "bootstrap": "^3.3.6",
-    "electron": "^1.6.2",
-    "es6-shim": "^0.33.3",
-    "gulp": "^3.9.0",
-    "reflect-metadata": "0.1.2",
-    "rxjs": "5.0.0-beta.0",
     "wpilib-nt-client": "^1.2.2",
-    "zone.js": "^0.5.10"
+    "electron": "^1.6.2"
   }
 }
