@@ -1,6 +1,8 @@
 'use strict';
 
 angular.module('try', ['textBlock']);
+
+var $scope = angular.element('textBlock')
 /*
 // Sets function to be called when robot dis/connects
 NetworkTables.addRobotConnectionListener(onRobotConnection, false);
