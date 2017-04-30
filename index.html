@@ -4,13 +4,16 @@
 <head>
   <meta charset="UTF-8" />
   <title>Tabula</title>
-</head>
-<body>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="css/main.css"/>
   <script src="loadIPC.js"></script>
   <script src="networktables/networktables.js"></script>
-  <script src="./node_modules/angular/angular.js"></script>
-  <script src="./dashboard/index.js"></script>
-  <script src = "./dashboard/dashboard.js"></script>
+  <script src="node_modules/angular/angular.js"></script>
+  <script src="dashboard/ui-bootstrap.js"></script>
+  <script src="dashboard/index.js"></script>
+  <script src = "dashboard/dashboard.js"></script>
+</head>
+<body ng-app="dashboard" ng-controller="DashboardController">
 
   <script src="index.js"></script>
 
@@ -22,6 +25,8 @@
       <h2>{{value}}</h2>
 
   <div ng-app="dashboard" ng-controller='DashboardController'>
+  <div>
+
       <motor-speed nt-key="t_leftMotor" name="leftMotor"></motor-speed>
       <motor-speed nt-key="t_rightMotor" name="rightMotor"></motor-speed>
 

@@ -7,7 +7,7 @@ NetworkTables.addRobotConnectionListener(onRobotConnection, false);
 NetworkTables.addGlobalListener(console.log, true);
 
 //sets up the angular app
-var app = angular.module('dashboard', []);
+var app = angular.module('dashboard', [require('angular-animate'), 'ui.bootstrap']);
 
 function onRobotConnection(connected){
     if(!connected && !noElectron){
