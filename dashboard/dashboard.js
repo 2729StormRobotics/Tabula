@@ -9,9 +9,8 @@ angular.module('dashboard').controller('DashboardController', function($scope){
         templateUrl: 'dashboard/templates/motor.html',
         link: function($scope, $element, $attrs){
             NetworkTables.addKeyListener($attrs.ntKey, function(key, value, isNew){
-                $scope.$apply(function(){
-                    $scope.textCont = value;
-                });
+                $scope.speed = value;
+                $scope.$apply();
             }, true);
         }
     }
