@@ -52,8 +52,8 @@ angular.module('dashboard').controller('DashboardController', function($scope){
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.font = '15px sans-serif';
-
-      drawCompass(0);
+      var current = 0;
+      drawCompass(0, current);
 
       function drawTicks() {
         ctx.beginPath();
@@ -89,48 +89,64 @@ angular.module('dashboard').controller('DashboardController', function($scope){
         ctx.fillText('225°', centerX - textRadius * Math.cos(Math.PI / 4), centerY + textRadius * Math.sin(Math.PI / 4));
         ctx.fillText('315°', centerX - textRadius * Math.cos(Math.PI / 4), centerY - textRadius * Math.sin(Math.PI / 4));
         ctx.stroke();
-
       }
 
-      function drawArrow(angle) {
+      function drawArrow(angle, current) {
         var arrowWidth = size * 0.2;
+        var start = new Date().getTime();
+        var duration = 400;
+        var end = start + duration;
+        var distance = angle - current;
+        if(isNaN(distance)) distance = 0;
+        var step = function(){
+            ctx.clearRect(0, 0, width, height);
+            drawTicks();
+            var timestamp = new Date().getTime();
+            var progress = Math.min((duration - (end - timestamp)) / duration, 1);
+            
+            ctx.translate(centerX, centerY);
+           
+            ctx.rotate(current + (distance * progress));
 
-        ctx.translate(centerX, centerY);
-        ctx.rotate(angle);
+            ctx.strokeWidth = 1;
+            ctx.strokeStyle = '#F78022';
+            ctx.fillStyle = '#F78022';
 
-        ctx.strokeWidth = 1;
-        ctx.strokeStyle = '#F78022';
-        ctx.fillStyle = '#F78022';
+            ctx.beginPath();
+            ctx.moveTo(arrowWidth / 2, 0);
+            ctx.lineTo(arrowWidth / 2, -size * 0.7);
+            ctx.lineTo(0, -size * 0.9);
+            ctx.lineTo(-arrowWidth / 2, -size * 0.7);
+            ctx.lineTo(-arrowWidth / 2, 0);
+            ctx.lineTo(arrowWidth / 2, 0);
 
-        ctx.beginPath();
-        ctx.moveTo(arrowWidth / 2, 0);
-        ctx.lineTo(arrowWidth / 2, -size * 0.7);
-        ctx.lineTo(0, -size * 0.9);
-        ctx.lineTo(-arrowWidth / 2, -size * 0.7);
-        ctx.lineTo(-arrowWidth / 2, 0);
-        ctx.lineTo(arrowWidth / 2, 0);
+            ctx.stroke();
+            ctx.fill();
 
-        ctx.stroke();
-        ctx.fill();
+            ctx.strokeStyle = '#000000';
+            ctx.fillStyle = '#000000';
 
-        ctx.strokeStyle = '#000000';
-        ctx.fillStyle = '#000000';
+            ctx.beginPath();
+            ctx.arc(0, 0, arrowWidth / 2 + 0.1, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.stroke();
 
-        ctx.beginPath();
-        ctx.arc(0, 0, arrowWidth / 2 + 0.1, 0, 2 * Math.PI);
-        ctx.fill();
-        ctx.stroke();
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+            // If the animation hasn't finished, repeat the step.
+            if (progress < 1) requestAnimationFrame(step);
 
-        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        }
+        return step();
+       
       }
 
-      function drawCompass(angle){
+      function drawCompass(angle, current){
       	ctx.clearRect(0, 0, width, height);
-        drawTicks();
-        drawArrow(angle);
+        drawArrow(angle, current);
       }
       NetworkTables.addKeyListener(attrs.ntKey, function(key, value, isNew){
-          drawCompass(value * Math.PI / 180);
+          drawCompass(value * Math.PI / 180, current);
+          current = value * Math.PI / 180;
       }, true);
     }
   };
