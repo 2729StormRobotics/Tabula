@@ -2,28 +2,6 @@
 
 angular.module('dashboard').controller('DashboardController', function($scope){
     console.log('hello');
-}).directive('boolean', function($interpolate, $compile){
-    return {
-        restrict: 'E',
-        scope: {
-            ntKey: '@',
-        },
-        templateUrl: 'dashboard/templates/boolean.html',
-        link: function($scope, $element, $attrs) {
-
-            NetworkTables.addKeyListener($attrs.ntKey, function(key, value, isNew){
-                console.log("received change");
-                if (value) {
-                    $element.addClass('booleanOn');
-                    $element.removeClass('booleanOff');
-                } else {
-                    $element.removeClass('booleanOn');
-                    $element.addClass('booleanOff');
-                }
-                $compile($element.contents())($scope);
-            }, true);
-        }
-    }
 }).directive('motorSpeed', function(){
     return{
         restrict: 'E',
@@ -172,4 +150,24 @@ angular.module('dashboard').controller('DashboardController', function($scope){
       }, true);
     }
   };
+}).directive('boolean', function($interpolate, $compile){
+    return {
+        restrict: 'E',
+        scope: {
+            ntKey: '@',
+        },
+        templateUrl: 'dashboard/templates/boolean.html',
+        link: function($scope, $element, $attrs) {
+            $scope.boolClass = "booleanOff";
+            NetworkTables.addKeyListener($attrs.ntKey, function(key, value, isNew){
+                console.log("received change");
+                if (value) {
+                    $scope.boolClass = "booleanOn";
+                } else {
+                    $scope.boolClass = "booleanOff";
+                }
+                $scope.$apply();
+            }, true);
+        }
+    };
 });
