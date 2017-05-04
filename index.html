@@ -17,19 +17,14 @@
 
   <script src="index.js"></script>
 
-  <script src = "./text-block/text-block.module.js"></script>
-  <script src = "./text-block/text-block.component.js"></script>
-
-  <div ng-app="textBlock" ng-controller='TextBlockController'>
-      <h1>{{key}}</h1>
-      <h2>{{value}}</h2>
 
   <div ng-app="dashboard" ng-controller='DashboardController'>
   <div>
       <motor-speed nt-key="t_leftMotor" name="leftMotor"></motor-speed>
       <motor-speed nt-key="t_rightMotor" name="rightMotor"></motor-speed>
-
       <compass nt-key="t_gyro" height="200" width="200"></compass>
+      <boolean nt-ket="t_leftEncoder"></boolean>
+      <boolean nt-ket="t_rightEncoder"></boolean>
   </div>
 </body>
 </html>

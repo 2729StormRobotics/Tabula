@@ -4,3 +4,13 @@ body{
 p{
     color: #FFFFFF;
 }
+.booleanOn{
+    width: 100px;
+    height: 100px;
+    background-color: #7FFF00;
+}
+.booleanOff{
+    width: 100px;
+    height: 100px;
+    background-color: #FF0000;
+}

@@ -2,6 +2,26 @@
 
 angular.module('dashboard').controller('DashboardController', function($scope){
     console.log('hello');
+}).directive('boolean', function(){
+    return {
+        restrict: 'E',
+        scope: {
+            ntKey: '@',
+        },
+        templateUrl: 'dashboard/templates/boolean.html',
+        link: function($scope, $element, $attrs) {
+            NetworkTables.addKeyListener($attrs.ntKey, function(key, value, isNew){
+                console.log("received change");
+                if (value) {
+                    $element.addClass('booleanOn');
+                    $element.removeClass('booleanOff');
+                } else {
+                    $element.removeClass('booleanOn');
+                    $element.addClass('booleanOff');
+                }
+            }, true);
+        }
+    }
 }).directive('motorSpeed', function(){
     return{
         restrict: 'E',
@@ -103,9 +123,9 @@ angular.module('dashboard').controller('DashboardController', function($scope){
             drawTicks();
             var timestamp = new Date().getTime();
             var progress = Math.min((duration - (end - timestamp)) / duration, 1);
-            
+
             ctx.translate(centerX, centerY);
-           
+
             ctx.rotate(current + (distance * progress));
 
             ctx.strokeWidth = 1;
@@ -137,7 +157,7 @@ angular.module('dashboard').controller('DashboardController', function($scope){
 
         }
         return step();
-       
+
       }
 
       function drawCompass(angle, current){
