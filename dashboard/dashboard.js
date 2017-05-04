@@ -2,7 +2,7 @@
 
 angular.module('dashboard').controller('DashboardController', function($scope){
     console.log('hello');
-}).directive('boolean', function(){
+}).directive('boolean', function($interpolate, $compile){
     return {
         restrict: 'E',
         scope: {
@@ -10,6 +10,7 @@ angular.module('dashboard').controller('DashboardController', function($scope){
         },
         templateUrl: 'dashboard/templates/boolean.html',
         link: function($scope, $element, $attrs) {
+
             NetworkTables.addKeyListener($attrs.ntKey, function(key, value, isNew){
                 console.log("received change");
                 if (value) {
@@ -19,6 +20,7 @@ angular.module('dashboard').controller('DashboardController', function($scope){
                     $element.removeClass('booleanOn');
                     $element.addClass('booleanOff');
                 }
+                $compile($element.contents())($scope);
             }, true);
         }
     }
