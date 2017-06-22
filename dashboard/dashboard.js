@@ -150,13 +150,14 @@ angular.module('dashboard').controller('DashboardController', function($scope){
       }, true);
     }
   };
-}).directive('boolean', function($interpolate, $compile){
+}).directive('encoderStatus', function($interpolate, $compile){
     return {
         restrict: 'E',
         scope: {
             ntKey: '@',
+            name: '@'
         },
-        templateUrl: 'dashboard/templates/boolean.html',
+        templateUrl: 'dashboard/templates/encoderStatus.html',
         link: function($scope, $element, $attrs) {
             $scope.boolClass = "booleanOff";
             NetworkTables.addKeyListener($attrs.ntKey, function(key, value, isNew){
