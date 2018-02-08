@@ -33,7 +33,7 @@ let gameData;
 ui.gear.innerHTML = "NOT A TEST";
 
 //ui.closeSwitchImg.style.transform = `rotate(-90deg)`;
-/**
+
 function drawPowerUpField() {
 
   if (testIfRed == false) {
@@ -54,7 +54,7 @@ function drawPowerUpField() {
       ui.farSwitchImg.style.transform = `rotate(-90deg)`
     }
   } else {
-    ui.fieldImg.style.transform = `rotate(90deg)`
+    ui.fieldImg.style.transform = `rotate(-90deg)`
     if (gameData.slice(0, 1) == "L") {
       ui.closeSwitchImg.style.transform = `rotate(-90deg)`
     } else {
@@ -74,7 +74,6 @@ function drawPowerUpField() {
 
 };
 
-**/
 
 // TODO Get alliance (boolean)
 NetworkTables.addKeyListener('/FMSInfo/IsRedAlliance', (key, value) => {
@@ -82,12 +81,12 @@ NetworkTables.addKeyListener('/FMSInfo/IsRedAlliance', (key, value) => {
     ui.alliance.innerHTML = 'Is Red Alliance: ' + value;
     testIfRed = value;
 
-    //drawPowerUpField();
+    drawPowerUpField();
 
 });
 
 
-let
+
 
 // TODO Get field information (string)
 NetworkTables.addKeyListener('/FMSInfo/GameSpecificMessage', (key, value) => {
@@ -95,7 +94,7 @@ NetworkTables.addKeyListener('/FMSInfo/GameSpecificMessage', (key, value) => {
     ui.fieldInfo.innerHTML = 'Field Data: ' + value;
     gameData = value;
 
-    //drawPowerUpField();
+    drawPowerUpField();
 
 });
 
