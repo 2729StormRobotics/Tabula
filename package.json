@@ -1,35 +1,29 @@
 {
-  "name": "tabula",
-  "version": "1.0.0",
-  "description": "Web Dashboard for frc 2729",
-  "main": "main.js",
+  "name": "FRCDashboard",
+  "version": "2.1.0",
+  "description": "Robot control dashboard boilerplate for FRC.",
+  "main": "src/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron main.js"
+    "start": "electron .",
+    "package-mac": "electron-packager . --platform=darwin --icon=images/icon.icns --out dist/",
+    "package-linux": "electron-packager . --platform=linux --icon=images/icon.png --out dist/",
+    "package-win": "electron-packager . --platform=win32 --icon=images/icon.ico --out dist/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/2729StormRobotics/Tabula.git"
+    "url": "git+https://github.com/FRCDashboard/FRCDashboard"
   },
-  "keywords": [
-    "web",
-    "frc",
-    "dashboard",
-    "storm",
-    "2729"
-  ],
-  "author": "Storm Robotics, atf1999 (Tom Orth), SimarKareer (Simar Kareer)",
+  "author": "Erik Boesen",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/2729StormRobotics/Tabula/issues"
+    "url": "https://github.com/FRCDashboard/FRCDashboard/issues"
   },
-  "homepage": "https://github.com/2729StormRobotics/Tabula#readme",
+  "homepage": "http://frcdashboard.github.io",
+  "devDependencies": {
+    "electron": "^1.7.12",
+    "electron-packager": "^10.1.1"
+  },
   "dependencies": {
-    "angular": "^1.6.4",
-    "angular-animate": "^1.6.4",
-    "angularjs": "0.0.1",
-    "bootstrap": "^3.3.7",
-    "electron": "^1.6.2",
-    "wpilib-nt-client": "^1.2.2"
+    "wpilib-nt-client": "^1.4.0"
   }
 }
