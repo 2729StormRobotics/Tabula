@@ -16,13 +16,12 @@
     <!-- You'll need to mess around with the CSS of #camera (found in css/style.css) to get it to work.
         More explanation in that CSS rule. -->
     <div id="camera"></div>
-    <!-- The main body of the dashboard, by default contains the gyro monitor and the robot diagram -->
+    <!-- The main body of the dashboard, contains the field drawing -->
     <article>
-
-        <img src="img-src/Field.png" id="img-field" height="500" width="1000">
-        <img src="img-src/Scale.png" id="img-scale" height="200" width="50">
-        <img src="img-src/Switch.png" id="img-switch-close" height="174" width="60">
-        <img src="img-src/Switch.png" id="img-switch-far" height="174" width="60">
+        <img src="img-src/Field_Final.png" id="img-field" height="400" width="1000">
+        <img src="img-src/Scale.png" id="img-scale" height="190" width="50">
+        <img src="img-src/Switch.png" id="img-switch-close" height="164" width="60">
+        <img src="img-src/Switch.png" id="img-switch-far" height="164" width="60">
 
     </article>
     <!-- The sidebar of the dashboard. Designed for smaller control elements like selection boxes and small buttons. -->
@@ -39,7 +38,6 @@
             <p id="storm-acceleration">test val 5</p>
             <p id="storm-arm">test val 5</p>
 
-
         </div>
         <!-- Autonomous selector -->
         <div class="select-container">
@@ -52,7 +50,12 @@
             <p>Adjust arm height</p>
             <input id="arm-position" type="range" min="0" max="1200" value="770">
         </div>
+        <!-- Robot drawing -->
+        <img src="img-src/Arm_Down.png" id="img-arm-down" height="220" width="450">
+        <img src="img-src/High_Gear.png" id="img-high-gear" height="50" width="50">
     </aside>
+
+
     <div id="login">
         <input id="connect-address" type="text" value="localhost" disabled>
         <button id="connect" disabled>Connecting</button>

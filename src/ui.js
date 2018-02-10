@@ -30,11 +30,37 @@ let ui = {
 let testIfRed;
 let gameData;
 
+// Constants for field Elements
+let DEF_FIELD_X = 0;
+let DEF_SCALE_X = 475;
+let DEF_CLOSE_SWITCH_X = 470;
+let DEF_FAR_SWITCH_X = 470;
+
+let DEF_FIELD_Y = 60;
+let DEF_SCALE_Y = 165;
+let DEF_CLOSE_SWITCH_Y = 352;
+let DEF_FAR_SWITCH_Y = 4;
+
+
+// Offsets position all field elements as a whole
+let OFFSET_X = 220;
+let OFFSET_Y = 2;
+
 ui.gear.innerHTML = "NOT A TEST";
 
 //ui.closeSwitchImg.style.transform = `rotate(-90deg)`;
+ui.fieldImg.style.left = (OFFSET_X + DEF_FIELD_X) + "px"
+ui.scaleImg.style.left = (OFFSET_X + DEF_SCALE_X) + "px"
+ui.closeSwitchImg.style.left = (OFFSET_X + DEF_CLOSE_SWITCH_X) + "px"
+ui.farSwitchImg.style.left = (OFFSET_X + DEF_FAR_SWITCH_X) + "px"
+
+ui.fieldImg.style.top = (OFFSET_Y + DEF_FIELD_Y) + "px"
+ui.scaleImg.style.top = (OFFSET_Y + DEF_SCALE_Y) + "px"
+ui.closeSwitchImg.style.top = (OFFSET_Y + DEF_CLOSE_SWITCH_Y) + "px"
+ui.farSwitchImg.style.top = (OFFSET_Y + DEF_FAR_SWITCH_Y) + "px"
 
 function drawPowerUpField() {
+
 
   if (testIfRed == false) {
     ui.fieldImg.style.transform = `rotate(90deg)`

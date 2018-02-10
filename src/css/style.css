@@ -59,6 +59,7 @@ body > * {
     font-size: 20vh;
     line-height: .8;
 }
+
 header {
     width: 20vw;
     height: 20vh;
@@ -68,15 +69,16 @@ header {
 }
 #camera {
     padding: 0;
-    position: fixed;
+    position: absolute;
     bottom: 0;
     left: 0;
-    width: 50vw;
+    width: 540px;
     height: 80vh;
     overflow: hidden;
     background-color: #333;
+    z-index: 1;
     /* You'll need to mess with this a bit to get your camera to work. Replace the url with a live-updating image feed from your camera. Using other camera streaming systems will require some tweaking. */
-    /*background-image: url('LINK TO CAMERA SOURCE HERE');*/
+    background-image: url('http://roborio-2729-frc.local:1181/?action=stream');
 }
 article {
     top: 0;
@@ -105,29 +107,29 @@ text {
     margin-top: 15px;
 }
 #img-field{
-    transform: rotate(90deg);
-    position: fixed;
-    top: 10px;
-    left: 30vw;
 
+  transform: rotate(90deg);
+  position: fixed;
+  top: 60px;
+  left: 0px;
 }
 #img-scale{
     transform: rotate(90deg);
     position: fixed;
-    top: 160px;
-    left: 65vw;
+    top: 165px;
+    left: 475px;
 }
 #img-switch-close{
     transform: rotate(90deg);
     position: fixed;
-    top: 350px;
-    left: 65vw;
+    top: 352px;
+    left: 470px;
 }
 #img-switch-far{
     transform: rotate(90deg);
     position: fixed;
-    top: 0px;
-    left: 65vw;
+    top: 4px;
+    left: 470px;
 }
 #gyro-arm {
     -webkit-transform-origin: bottom;
@@ -155,7 +157,7 @@ text {
 aside {
     right: 0;
     top: 0;
-    width: 15vw;
+    width: 466px;
     height: 100vh;
 }
 aside > * {
