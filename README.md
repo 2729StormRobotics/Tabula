@@ -4,13 +4,13 @@
 
 [![Build Status](https://travis-ci.org/2729StormRobotics/Tabula.svg?branch=master)](https://travis-ci.org/2729StormRobotics/Tabula)
 
-[![SonarCloud Status](https://sonarcloud.io/api/project_badges/measure?project=StormRobotics2018&metric=alert_status)](https://sonarcloud.io/dashboard?id=StormRobotics2018)
-[![SonarCloud Maintainability](https://sonarcloud.io/api/project_badges/measure?project=StormRobotics2018&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=StormRobotics2018)
-[![SonarCloud Security](https://sonarcloud.io/api/project_badges/measure?project=StormRobotics2018&metric=security_rating)](https://sonarcloud.io/dashboard?id=StormRobotics2018)
-[![SonarCloud Reliability](https://sonarcloud.io/api/project_badges/measure?project=StormRobotics2018&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=StormRobotics2018)
-[![SonarCloud Bugs](https://sonarcloud.io/api/project_badges/measure?project=StormRobotics2018&metric=bugs)](https://sonarcloud.io/dashboard?id=StormRobotics2018)
-[![SonarCloud Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=StormRobotics2018&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=StormRobotics2018)
-[![SonarCloud Code Smells](https://sonarcloud.io/api/project_badges/measure?project=StormRobotics2018&metric=code_smells)](https://sonarcloud.io/dashboard?id=StormRobotics2018)
+[![SonarCloud Status](https://sonarcloud.io/api/project_badges/measure?project=Tabula&metric=alert_status)](https://sonarcloud.io/dashboard?id=Tabula)
+[![SonarCloud Maintainability](https://sonarcloud.io/api/project_badges/measure?project=Tabula&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=Tabula)
+[![SonarCloud Security](https://sonarcloud.io/api/project_badges/measure?project=Tabula&metric=security_rating)](https://sonarcloud.io/dashboard?id=Tabula)
+[![SonarCloud Reliability](https://sonarcloud.io/api/project_badges/measure?project=Tabula&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=Tabula)
+[![SonarCloud Bugs](https://sonarcloud.io/api/project_badges/measure?project=Tabula&metric=bugs)](https://sonarcloud.io/dashboard?id=Tabula)
+[![SonarCloud Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Tabula&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=Tabula)
+[![SonarCloud Code Smells](https://sonarcloud.io/api/project_badges/measure?project=Tabula&metric=code_smells)](https://sonarcloud.io/dashboard?id=Tabula)
 
 STORM Dashboard is team 2729's implementation of FRCDashboard. Some changes have been made to the overall structure in an overall attempt to make the dashboard more accessible to newer teams or students that don't know JavaScript/HTML.
 
