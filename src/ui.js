@@ -49,56 +49,56 @@ let OFFSET_Y = 2;
 ui.gear.innerHTML = "NOT A TEST";
 
 //ui.closeSwitchImg.style.transform = `rotate(-90deg)`;
-ui.fieldImg.style.left = (OFFSET_X + DEF_FIELD_X) + "px"
-ui.scaleImg.style.left = (OFFSET_X + DEF_SCALE_X) + "px"
-ui.closeSwitchImg.style.left = (OFFSET_X + DEF_CLOSE_SWITCH_X) + "px"
-ui.farSwitchImg.style.left = (OFFSET_X + DEF_FAR_SWITCH_X) + "px"
+ui.fieldImg.style.left = (OFFSET_X + DEF_FIELD_X) + "px";
+ui.scaleImg.style.left = (OFFSET_X + DEF_SCALE_X) + "px";
+ui.closeSwitchImg.style.left = (OFFSET_X + DEF_CLOSE_SWITCH_X) + "px";
+ui.farSwitchImg.style.left = (OFFSET_X + DEF_FAR_SWITCH_X) + "px";
 
-ui.fieldImg.style.top = (OFFSET_Y + DEF_FIELD_Y) + "px"
-ui.scaleImg.style.top = (OFFSET_Y + DEF_SCALE_Y) + "px"
-ui.closeSwitchImg.style.top = (OFFSET_Y + DEF_CLOSE_SWITCH_Y) + "px"
-ui.farSwitchImg.style.top = (OFFSET_Y + DEF_FAR_SWITCH_Y) + "px"
+ui.fieldImg.style.top = (OFFSET_Y + DEF_FIELD_Y) + "px";
+ui.scaleImg.style.top = (OFFSET_Y + DEF_SCALE_Y) + "px";
+ui.closeSwitchImg.style.top = (OFFSET_Y + DEF_CLOSE_SWITCH_Y) + "px";
+ui.farSwitchImg.style.top = (OFFSET_Y + DEF_FAR_SWITCH_Y) + "px";
 
 function drawPowerUpField() {
 
 
   if (testIfRed == false) {
-    ui.fieldImg.style.transform = `rotate(90deg)`
+    ui.fieldImg.style.transform = `rotate(90deg)`;
     if (gameData.slice(0, 1) == "L") {
-      ui.closeSwitchImg.style.transform = `rotate(90deg)`
+      ui.closeSwitchImg.style.transform = `rotate(90deg)`;
     } else {
-      ui.closeSwitchImg.style.transform = `rotate(-90deg)`
+      ui.closeSwitchImg.style.transform = `rotate(-90deg)`;
     }
     if (gameData.slice(1, 2) == "L") {
-      ui.scaleImg.style.transform = `rotate(90deg)`
+      ui.scaleImg.style.transform = `rotate(90deg)`;
     } else {
-      ui.scaleImg.style.transform = `rotate(-90deg)`
+      ui.scaleImg.style.transform = `rotate(-90deg)`;
     }
     if (gameData.slice(2) == "L") {
-      ui.farSwitchImg.style.transform = `rotate(90deg)`
+      ui.farSwitchImg.style.transform = `rotate(90deg)`;
     } else {
-      ui.farSwitchImg.style.transform = `rotate(-90deg)`
+      ui.farSwitchImg.style.transform = `rotate(-90deg)`;
     }
   } else {
-    ui.fieldImg.style.transform = `rotate(-90deg)`
+    ui.fieldImg.style.transform = `rotate(-90deg)`;
     if (gameData.slice(0, 1) == "L") {
-      ui.closeSwitchImg.style.transform = `rotate(-90deg)`
+      ui.closeSwitchImg.style.transform = `rotate(-90deg)`;
     } else {
-      ui.closeSwitchImg.style.transform = `rotate(90deg)`
+      ui.closeSwitchImg.style.transform = `rotate(90deg)`;
     }
     if (gameData.slice(1, 2) == "L") {
-      ui.scaleImg.style.transform = `rotate(-90deg)`
+      ui.scaleImg.style.transform = `rotate(-90deg)`;
     } else {
-      ui.scaleImg.style.transform = `rotate(90deg)`
+      ui.scaleImg.style.transform = `rotate(90deg)`;
     }
     if (gameData.slice(2) == "L") {
-      ui.farSwitchImg.style.transform = `rotate(-90deg)`
+      ui.farSwitchImg.style.transform = `rotate(-90deg)`;
     } else {
-      ui.farSwitchImg.style.transform = `rotate(90deg)`
+      ui.farSwitchImg.style.transform = `rotate(90deg)`;
     }
   }
 
-};
+}
 
 
 // TODO Get alliance (boolean)
@@ -150,5 +150,5 @@ NetworkTables.addKeyListener('/StormDashboard/Arm', (key, value) => {
 
 // Error catcher
 addEventListener('error',(ev)=>{
-    ipc.send('windowError',ev)
-})
+    ipc.send('windowError',ev);
+});

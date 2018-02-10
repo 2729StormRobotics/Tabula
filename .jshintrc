@@ -1,0 +1,5 @@
+{
+  "maxerr"        : 1000,
+  "node"          : true,
+  "esversion"     : 6
+}
