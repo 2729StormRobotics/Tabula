@@ -1,0 +1,36 @@
+dist: trusty
+
+sudo: required
+
+language: node_js
+
+node_js:
+  - "node"
+  - "lts/*"
+  - "lts/Argon"
+  - "lts/Boron"
+  - "lts/Carbon"
+  - "8"
+  - "7"
+  - "6"
+  - "5"
+
+addons:
+  sonarcloud:
+    organization: "storm-robotics-2729-github"
+    token:
+      secure: "Xf3C7YH7t+QK10zltXHcEbgaUOv3HrtwSOSxNSXWgqYY5rFiR9rgcw2eNqzFltkzscJ8w2SqoTbkKtKrghBDl3A2xr9mJT4e5YGJtYcm/rxNK6GIq5kP7k3swcGhRpKse0e2Y578vmQHGKTIYlWs/JGOkHJOVMbzRfyev3tmtKHEVcFluJ/QfNsptuxQsZq4WMHYd/p04OjhnhzqCVDWx/xkYCLaF9Fq2E70oevaGYdE/IsTA/1NVZH1mWxPB7KElHL/eoeGsZdCEIEbOE6E9/YlMweqofJJK6zfEhHUghHLBZcG77o/MoaWkNVagCph1H3YvBEAVknM6nv/6uu/9rcbarhfZsFRP0H0qbZltZ3JB894Z2M9FzO8zPICLNpNiyYAm5JyEa0fIc7MKupqWJ8DmMOWG8gmPkLw9+NotnqiX4Jtc+RaTo2qSUXTYcDNGVnOdH0arKVxGZ+g9BzPIpyfanqfwCUWgeOJJpQqd2w7jmXoDdPwGtpfIqiGWeTwgnxVUMNsDlrJF+3eE0TpItKbNE/gSfvxBsOh4ll3BJJL+d4JqCkDhdTzZAYdZarKJexJ2wPAQtzKHwVrqIxVEr8Cb/8lUJytp03t76kwf/tCqO+xDbpLn//oUbes2DGYHblemm9yYI0I7aP6YkYYJJsZ0KT0NmOxiH9l2+Wb9nY="
+
+jdk:
+  - oraclejdk8
+
+script:
+  - npm build
+  - npm test
+  - sonar-scanner
+
+cache:
+  directories:
+    - "node_modules"
+    - "$HOME/.sonar/cache/"
+
