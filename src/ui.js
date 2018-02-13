@@ -2,25 +2,28 @@
 let ui = {
     timer: document.getElementById('timer'),
     robotState: document.getElementById('robot-state').firstChild,
-    robotDiagram: {
-        arm: document.getElementById('robot-arm')
-    },
     example: {
         button: document.getElementById('example-button'),
         readout: document.getElementById('example-readout').firstChild
     },
     autoSelect: document.getElementById('auto-select'),
     armPosition: document.getElementById('arm-position'),
-    fieldInfo: document.getElementById('storm-field-info'),
-    alliance: document.getElementById('storm-alliance'),
-    gear: document.getElementById('storm-gear'),
-    pto: document.getElementById('storm-pto'),
-    acceleration: document.getElementById('storm-acceleration'),
-    arm: document.getElementById('storm-arm'),
+    fieldInfo: document.getElementById('telem-field-info'),
+    alliance: document.getElementById('telem-alliance'),
+    gear: document.getElementById('telem-gear'),
+    pto: document.getElementById('telem-pto'),
+    accelerationOutput: document.getElementById('telem-acceleration'),
+    arm: document.getElementById('telem-arm'),
     fieldImg: document.getElementById('img-field'),
     scaleImg: document.getElementById('img-scale'),
     closeSwitchImg: document.getElementById('img-switch-close'),
-    farSwitchImg: document.getElementById('img-switch-far')
+    farSwitchImg: document.getElementById('img-switch-far'),
+    wheel1: document.getElementById('img-wheel-1'),
+    wheel2: document.getElementById('img-wheel-2'),
+    wheel3: document.getElementById('img-wheel-3'),
+    gearReadout: document.getElementById('img-gear'),
+    robotDiagram: document.getElementById('img-robot-diagram')
+
 
 
 };
@@ -28,7 +31,11 @@ let ui = {
 // Key Listeners
 
 let testIfRed;
-let gameData;
+let gameData = "XXX";
+let isArmDown = true;
+let isAcceleration = false;
+let isPTO = false;
+let isLowGear = false;
 
 // Constants for field Elements
 let DEF_FIELD_X = 0;
@@ -48,7 +55,7 @@ let OFFSET_Y = 2;
 
 ui.gear.innerHTML = "NOT A TEST";
 
-//ui.closeSwitchImg.style.transform = `rotate(-90deg)`;
+
 ui.fieldImg.style.left = (OFFSET_X + DEF_FIELD_X) + "px";
 ui.scaleImg.style.left = (OFFSET_X + DEF_SCALE_X) + "px";
 ui.closeSwitchImg.style.left = (OFFSET_X + DEF_CLOSE_SWITCH_X) + "px";
@@ -59,8 +66,65 @@ ui.scaleImg.style.top = (OFFSET_Y + DEF_SCALE_Y) + "px";
 ui.closeSwitchImg.style.top = (OFFSET_Y + DEF_CLOSE_SWITCH_Y) + "px";
 ui.farSwitchImg.style.top = (OFFSET_Y + DEF_FAR_SWITCH_Y) + "px";
 
-function drawPowerUpField() {
 
+// method that draws the robot
+function drawRobot() {
+
+  if (isArmDown) {
+    ui.robotDiagram.src="img-src/Arm_Down_Final.png";
+
+    ui.wheel1.style.transform = `scale(0.16)`;
+    ui.wheel1.style.top = `308px`;
+    ui.wheel1.style.right = `25px`;
+
+    ui.wheel2.style.transform = `scale(0.16)`;
+    ui.wheel2.style.top = `308px`;
+    ui.wheel2.style.right = `-67px`;
+
+    ui.wheel3.style.transform = `scale(0.16)`;
+    ui.wheel3.style.top = `308px`;
+    ui.wheel3.style.right = `-160px`;
+
+  } else {
+    ui.robotDiagram.src="img-src/Arm_Up_Final.png";
+
+    ui.wheel1.style.transform = `scale(0.13)`;
+    ui.wheel1.style.top = `364px`;
+    ui.wheel1.style.right = `80px`;
+
+    ui.wheel2.style.transform = `scale(0.13)`;
+    ui.wheel2.style.top = `364px`;
+    ui.wheel2.style.right = `10px`;
+
+    ui.wheel3.style.transform = `scale(0.13)`;
+    ui.wheel3.style.top = `364px`;
+    ui.wheel3.style.right = `-60px`;
+  }
+
+  if (isAcceleration) {
+    ui.wheel1.src="img-src/Acceleration_Enabled.png";
+    ui.wheel2.src="img-src/Acceleration_Enabled.png";
+    ui.wheel3.src="img-src/Acceleration_Enabled.png";
+  } else {
+    ui.wheel1.src="img-src/Acceleration_Disabled.png";
+    ui.wheel2.src="img-src/Acceleration_Disabled.png";
+    ui.wheel3.src="img-src/Acceleration_Disabled.png";
+  }
+
+  if (isPTO) {
+    ui.gearReadout.src="img-src/PTO_Gear.png";
+  } else if (isLowGear) {
+    ui.gearReadout.src="img-src/Low_Gear.png";
+  } else {
+    ui.gearReadout.src="img-src/High_Gear.png";
+  }
+
+}
+
+drawRobot();
+
+// method that draws the field with corresponding alliance
+function drawPowerUpField() {
 
   if (testIfRed == false) {
     ui.fieldImg.style.transform = `rotate(90deg)`;
@@ -107,6 +171,7 @@ NetworkTables.addKeyListener('/FMSInfo/IsRedAlliance', (key, value) => {
     ui.alliance.innerHTML = 'Is Red Alliance: ' + value;
     testIfRed = value;
 
+
     drawPowerUpField();
 
 });
@@ -127,25 +192,33 @@ NetworkTables.addKeyListener('/FMSInfo/GameSpecificMessage', (key, value) => {
 
 
 
+
 // TODO Get Gear status (boolean)
 NetworkTables.addKeyListener('/StormDashboard/Gear', (key, value) => {
     // Set class active if value is true and unset it if it is false
     ui.gear.innerHTML = 'Gear setting: ' + value;
+    console.log("test1");
 });
+
 // TODO Get PTO status (boolean)
 NetworkTables.addKeyListener('/StormDashboard/PTO', (key, value) => {
     // Set class active if value is true and unset it if it is false
     ui.pto.innerHTML = 'Power Take Off: ' + value;
+    console.log("test1");
 });
+
 // TODO Get Accel toggle (boolean)
 NetworkTables.addKeyListener('/StormDashboard/Acceleration', (key, value) => {
     // Set class active if value is true and unset it if it is false
-    ui.acceleration.innerHTML = 'Acceleration: ' + value;
+    ui.accelerationOutput.innerHTML = 'Acceleration: ' + value;
+    console.log("test1");
 });
+
 // TODO Get Arm position (boooooolean)
 NetworkTables.addKeyListener('/StormDashboard/Arm', (key, value) => {
     // Set class active if value is true and unset it if it is false
     ui.arm.innerHTML = 'Arm Position: ' + value;
+    console.log("test1");
 });
 
 // Error catcher

@@ -72,7 +72,7 @@ header {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 540px;
+    width: 530px;
     height: 80vh;
     overflow: hidden;
     background-color: #333;
@@ -131,24 +131,31 @@ text {
     top: 4px;
     left: 470px;
 }
-#gyro-arm {
-    -webkit-transform-origin: bottom;
-    -ms-transform-origin: bottom;
-    transform-origin: bottom;
+#img-robot-diagram{
+    position: relative;
+    z-index: 1
 }
-#gyro-number {
-    font-size: 25px;
-    text-anchor: middle;
+#img-gear{
+    transform: scale(0.25);
+    position: fixed;
+    z-index: 2;
+    top: 335px;
+    right: 180px;
 }
-#robot-diagram {
-    position: absolute;
-    bottom: 1px;
-    right: 1vw;
+#img-wheel-1{
+    transform: scale(0.16);
+    position: fixed;
+    z-index: 3;
 }
-#robot-arm {
-    -webkit-transform-origin: right;
-    -ms-transform-origin: right;
-    transform-origin: right;
+#img-wheel-2{
+    transform: scale(0.16);
+    position: fixed;
+    z-index: 3;
+}
+#img-wheel-3{
+    transform: scale(0.16);
+    position: fixed;
+    z-index: 3;
 }
 #team {
     font-size: 28px;
