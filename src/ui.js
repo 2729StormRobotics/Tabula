@@ -225,3 +225,30 @@ NetworkTables.addKeyListener('/StormDashboard/Arm', (key, value) => {
 addEventListener('error',(ev)=>{
     ipc.send('windowError',ev);
 });
+
+let timeRemaining = 20;
+
+// Update the count down every 1 second
+let countDownTimer = setInterval(function() {
+
+  // Get todays date and time
+
+
+  // Time calculations for days, hours, minutes and seconds
+  let minutes = Math.floor(timeRemaining / 60);
+  let seconds = Math.floor(timeRemaining - (minutes * 60));
+
+  // Display the result in the element with id="demo"
+  if (seconds < 10) {
+    seconds = "0" + seconds.toString();
+  }
+  timer.innerHTML = minutes + ":" + seconds;
+
+  --timeRemaining;
+
+  // If the count down is finished, write some text
+  if (timeRemaining < 0) {
+    clearInterval(countDownTimer);
+    timer.innerHTML = "TIME'S UP";
+  }
+}, 1000);
