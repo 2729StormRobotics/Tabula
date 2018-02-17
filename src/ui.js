@@ -114,9 +114,9 @@ function drawRobot() {
   if (isPTO) {
     ui.gearReadout.src="img-src/PTO_Gear.png";
   } else if (isLowGear) {
-    ui.gearReadout.src="img-src/Low_Gear.png";
+    ui.gearReadout.src="img-src/Low_Gear_Final.png";
   } else {
-    ui.gearReadout.src="img-src/High_Gear.png";
+    ui.gearReadout.src="img-src/High_Gear_Final.png";
   }
 
 }
@@ -194,31 +194,58 @@ NetworkTables.addKeyListener('/FMSInfo/GameSpecificMessage', (key, value) => {
 
 
 // TODO Get Gear status (boolean)
-NetworkTables.addKeyListener('/StormDashboard/Gear', (key, value) => {
+NetworkTables.addKeyListener('/SmartDashboard/StormDashboard/Gear', (key, value) => {
     // Set class active if value is true and unset it if it is false
+    // kOn = High_Gear
     ui.gear.innerHTML = 'Gear setting: ' + value;
-    console.log("test1");
+    if (value == "kReverse") {
+      isLowGear = true;
+    } else {
+      isLowGear = false;
+    }
+
+    drawRobot();
 });
 
 // TODO Get PTO status (boolean)
-NetworkTables.addKeyListener('/StormDashboard/PTO', (key, value) => {
+NetworkTables.addKeyListener('/SmartDashboard/StormDashboard/PTO', (key, value) => {
     // Set class active if value is true and unset it if it is false
+    // kOn = PTO_Disabled
     ui.pto.innerHTML = 'Power Take Off: ' + value;
-    console.log("test1");
+    if (value == "kReverse") {
+      isPTO = true;
+    } else {
+      isPTO = false;
+    }
+
+    drawRobot();
 });
 
 // TODO Get Accel toggle (boolean)
-NetworkTables.addKeyListener('/StormDashboard/Acceleration', (key, value) => {
+NetworkTables.addKeyListener('/SmartDashboard/StormDashboard/Acceleration', (key, value) => {
     // Set class active if value is true and unset it if it is false
     ui.accelerationOutput.innerHTML = 'Acceleration: ' + value;
-    console.log("test1");
+    if (value) {
+      isAcceleration = true;
+    } else {
+      isAcceleration = false;
+    }
+
+    drawRobot();
 });
 
 // TODO Get Arm position (boooooolean)
-NetworkTables.addKeyListener('/StormDashboard/Arm', (key, value) => {
+NetworkTables.addKeyListener('/SmartDashboard/StormDashboard/Arm', (key, value) => {
     // Set class active if value is true and unset it if it is false
+    // kOn = Arm_Up_Final
     ui.arm.innerHTML = 'Arm Position: ' + value;
-    console.log("test1");
+    if (value == "kReverse") {
+      isArmDown = true;
+    } else {
+      isArmDown = false;
+    }
+
+    drawRobot();
 });
 
 // Error catcher
@@ -226,7 +253,7 @@ addEventListener('error',(ev)=>{
     ipc.send('windowError',ev);
 });
 
-let timeRemaining = 135;
+let timeRemaining = 45;
 let offsetValue = 0;
 
 ui.example.button.onclick = function() {
@@ -248,9 +275,15 @@ let countDownTimer = setInterval(function() {
   if (seconds < 10) {
     seconds = "0" + seconds.toString();
   }
+
+  if (timeRemaining == 30) {
+    timer.style.color = `red`;
+  }
   timer.innerHTML = minutes + ":" + seconds;
 
   timeRemaining -= offsetValue;
+
+
 
   // If the count down is finished, write some text
   if (timeRemaining < 0) {
