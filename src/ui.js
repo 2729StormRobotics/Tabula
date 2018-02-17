@@ -226,7 +226,13 @@ addEventListener('error',(ev)=>{
     ipc.send('windowError',ev);
 });
 
-let timeRemaining = 20;
+let timeRemaining = 135;
+let offsetValue = 0;
+
+ui.example.button.onclick = function() {
+    // Starts the timer
+    offsetValue = 1;
+};
 
 // Update the count down every 1 second
 let countDownTimer = setInterval(function() {
@@ -244,7 +250,7 @@ let countDownTimer = setInterval(function() {
   }
   timer.innerHTML = minutes + ":" + seconds;
 
-  --timeRemaining;
+  timeRemaining -= offsetValue;
 
   // If the count down is finished, write some text
   if (timeRemaining < 0) {
