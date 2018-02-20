@@ -86,12 +86,6 @@ var NetworkTables =
                     f(connected);
                 return true;
             },
-            /**
-             * Set a function that will be called whenever any NetworkTables value is changed
-             * @param {(key: string, value: any, isNew: boolean) => any} f When any key changes, this function will be called with the following parameters;
-             * key: key name for entry, value: value of entry, isNew: If true, the entry has just been created
-             * @param {boolean} [immediateNotify] If true, the function will be immediately called with the current value of all keys
-             */
             addGlobalListener(f, immediateNotify) {
                 if(typeof f != 'function') {
                     return new Error('Invalid argument');
@@ -130,11 +124,7 @@ var NetworkTables =
                 }
             return true;
             },
-            /**
-             * Use this to test whether a value is present in the table or not
-             * @param {string} key A networktables key
-             * @returns true if a key is present in NetworkTables, false otherwise
-             */
+
             containsKey(key) {
                 if(typeof f != 'string') {
                     return false;
@@ -148,12 +138,7 @@ var NetworkTables =
             getKeys() {
                 return Object.keys(keys);
             },
-            /**
-             * Returns the value that the key maps to. If the websocket is not open, this will always return the default value specified.
-             * @param {string} key A networktables key
-             * @param {any} [defaultValue] If the key isn’t present in the table, return this instead
-             * @returns value of key if present, undefined or defaultValue otherwise
-             */
+
             getValue(key, defaultValue) {
                 if(typeof key != 'string') {
                     return new Error('Invalid Argument');
@@ -178,12 +163,6 @@ var NetworkTables =
             isRobotConnected() {
                 return connected;
             },
-            /**
-             * Sets the value in NetworkTables. If the websocket is not connected, the value will be discarded.
-             * @param {string} key A networktables key
-             * @param value The value to set (see warnings)
-             * @returns True if the websocket is open, False otherwise
-             */
             putValue(key, value) {
                 if(typeof key != 'string') {
                     return new Error('Invalid Argument');
@@ -205,11 +184,6 @@ var NetworkTables =
             create_map() {
                 return new d3_map();
             },
-            /**
-             * Escapes NetworkTables keys so that they’re valid HTML identifiers.
-             * @param key A networktables key
-             * @returns Escaped value
-             */
             keyToId: encodeURIComponent,
             /**
              * Escapes special characters and returns a valid jQuery selector. Useful as NetworkTables does not really put any limits on what keys can be used.
