@@ -55,7 +55,8 @@ var NetworkTables =
                 return d3_map_escape(key) in this._;
             };
             this.set = function (key, value) {
-                return this._[d3_map_escape(key)] = value;
+                this._[d3_map_escape(key)] = value;
+                return this._[d3d3_map_escape(key)];
             };
         };
         var d3_map_proto = '__proto__', d3_map_zero = '\x00';
@@ -63,7 +64,8 @@ var NetworkTables =
             return (key += '') === d3_map_proto || key[0] === d3_map_zero ? d3_map_zero + encodeURIComponent(key) : encodeURIComponent(key);
         }
         function d3_map_unescape(key) {
-            return (key += '')[0] === d3_map_zero ? decodeURIComponent(key.slice(1)) : decodeURIComponent(key);
+            key += '';
+            return (key)[0] === d3_map_zero ? decodeURIComponent(key.slice(1)) : decodeURIComponent(key);
         }
         return {
             /**
