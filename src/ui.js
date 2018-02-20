@@ -125,11 +125,10 @@ drawRobot();
 
 // method that draws the field with corresponding alliance
 function drawPowerUpField() {
-
-  if (testIfRed == false) {
-    drawBlueField();
-  } else {
+  if (testIfRed) {
     drawRedField();
+  } else {
+    drawBlueField();
   }
 }
 
@@ -170,7 +169,7 @@ function drawRedField() {
     ui.farSwitchImg.style.transform = `rotate(90deg)`;
   }
 }
-// TODO Get alliance (boolean)
+// Get alliance (boolean)
 NetworkTables.addKeyListener('/FMSInfo/IsRedAlliance', (key, value) => {
     // Set class active if value is true and unset it if it is false
     ui.alliance.innerHTML = 'Is Red Alliance: ' + value;
@@ -184,7 +183,7 @@ NetworkTables.addKeyListener('/FMSInfo/IsRedAlliance', (key, value) => {
 
 
 
-// TODO Get field information (string)
+// Get field information (string)
 NetworkTables.addKeyListener('/FMSInfo/GameSpecificMessage', (key, value) => {
     // Set class active if value is true and unset it if it is false
     ui.fieldInfo.innerHTML = 'Field Data: ' + value;
@@ -198,7 +197,7 @@ NetworkTables.addKeyListener('/FMSInfo/GameSpecificMessage', (key, value) => {
 
 
 
-// TODO Get Gear status (boolean)
+// Get Gear status (boolean)
 NetworkTables.addKeyListener('/SmartDashboard/StormDashboard/Gear', (key, value) => {
     // Set class active if value is true and unset it if it is false
     // kOn = High_Gear
@@ -212,7 +211,7 @@ NetworkTables.addKeyListener('/SmartDashboard/StormDashboard/Gear', (key, value)
     drawRobot();
 });
 
-// TODO Get PTO status (boolean)
+// Get PTO status (boolean)
 NetworkTables.addKeyListener('/SmartDashboard/StormDashboard/PTO', (key, value) => {
     // Set class active if value is true and unset it if it is false
     // kOn = PTO_Disabled
@@ -226,7 +225,7 @@ NetworkTables.addKeyListener('/SmartDashboard/StormDashboard/PTO', (key, value) 
     drawRobot();
 });
 
-// TODO Get Accel toggle (boolean)
+// Get Accel toggle (boolean)
 NetworkTables.addKeyListener('/SmartDashboard/StormDashboard/Acceleration', (key, value) => {
     // Set class active if value is true and unset it if it is false
     ui.accelerationOutput.innerHTML = 'Acceleration: ' + value;
@@ -239,7 +238,7 @@ NetworkTables.addKeyListener('/SmartDashboard/StormDashboard/Acceleration', (key
     drawRobot();
 });
 
-// TODO Get Arm position (boooooolean)
+// Get Arm position (boooooolean)
 NetworkTables.addKeyListener('/SmartDashboard/StormDashboard/Arm', (key, value) => {
     // Set class active if value is true and unset it if it is false
     // kOn = Arm_Up_Final
