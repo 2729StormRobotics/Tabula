@@ -67,7 +67,8 @@ var NetworkTables =
         }
         return {
             /**
-             * Sets a function to be called when the robot connects/disconnects to the pynetworktables2js server via NetworkTables. It will also be called when the websocket connects/disconnects.
+             * Sets a function to be called when the robot connects/disconnects to the pynetworktables2js server via NetworkTables.
+             * It will also be called when the websocket connects/disconnects.
              *
              * When a listener function is called with a ‘true’ parameter, the NetworkTables.getRobotAddress() function will return a non-null value.
              * @param {(connected: boolean) => any} f a function that will be called with a single boolean parameter that indicates whether the robot is connected
@@ -84,7 +85,8 @@ var NetworkTables =
             },
             /**
              * Set a function that will be called whenever any NetworkTables value is changed
-             * @param {(key: string, value: any, isNew: boolean) => any} f When any key changes, this function will be called with the following parameters; key: key name for entry, value: value of entry, isNew: If true, the entry has just been created
+             * @param {(key: string, value: any, isNew: boolean) => any} f When any key changes, this function will be called with the following parameters;
+             * key: key name for entry, value: value of entry, isNew: If true, the entry has just been created
              * @param {boolean} [immediateNotify] If true, the function will be immediately called with the current value of all keys
              */
             addGlobalListener(f, immediateNotify) {
@@ -103,7 +105,8 @@ var NetworkTables =
             /**
              * Set a function that will be called whenever a value for a particular key is changed in NetworkTables
              * @param {string} key A networktables key to listen for
-             * @param {(key: string, value: any, isNew: boolean) => any} f When the key changes, this function will be called with the following parameters; key: key name for entry, value: value of entry, isNew: If true, the entry has just been created
+             * @param {(key: string, value: any, isNew: boolean) => any} f When the key changes, this function will be called with the following parameters;
+             * key: key name for entry, value: value of entry, isNew: If true, the entry has just been created
              * @param {boolean} [immediateNotify] If true, the function will be immediately called with the current value of the specified key
              */
             addKeyListener(key, f, immediateNotify) {
