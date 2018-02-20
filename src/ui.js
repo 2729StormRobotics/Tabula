@@ -134,17 +134,17 @@ function drawPowerUpField() {
 
 function drawBlueField() {
   ui.fieldImg.style.transform = `rotate(90deg)`;
-  if (gameData.slice(0, 1) == "L") {
+  if (gameData.slice(0, 1) === "L") {
     ui.closeSwitchImg.style.transform = `rotate(90deg)`;
   } else {
     ui.closeSwitchImg.style.transform = `rotate(-90deg)`;
   }
-  if (gameData.slice(1, 2) == "L") {
+  if (gameData.slice(1, 2) === "L") {
     ui.scaleImg.style.transform = `rotate(90deg)`;
   } else {
     ui.scaleImg.style.transform = `rotate(-90deg)`;
   }
-  if (gameData.slice(2) == "L") {
+  if (gameData.slice(2) === "L") {
     ui.farSwitchImg.style.transform = `rotate(90deg)`;
   } else {
     ui.farSwitchImg.style.transform = `rotate(-90deg)`;
@@ -153,17 +153,17 @@ function drawBlueField() {
 
 function drawRedField() {
   ui.fieldImg.style.transform = `rotate(-90deg)`;
-  if (gameData.slice(0, 1) == "L") {
+  if (gameData.slice(0, 1) === "L") {
     ui.closeSwitchImg.style.transform = `rotate(-90deg)`;
   } else {
     ui.closeSwitchImg.style.transform = `rotate(90deg)`;
   }
-  if (gameData.slice(1, 2) == "L") {
+  if (gameData.slice(1, 2) === "L") {
     ui.scaleImg.style.transform = `rotate(-90deg)`;
   } else {
     ui.scaleImg.style.transform = `rotate(90deg)`;
   }
-  if (gameData.slice(2) == "L") {
+  if (gameData.slice(2) === "L") {
     ui.farSwitchImg.style.transform = `rotate(-90deg)`;
   } else {
     ui.farSwitchImg.style.transform = `rotate(90deg)`;
