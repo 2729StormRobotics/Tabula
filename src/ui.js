@@ -127,44 +127,49 @@ drawRobot();
 function drawPowerUpField() {
 
   if (testIfRed == false) {
-    ui.fieldImg.style.transform = `rotate(90deg)`;
-    if (gameData.slice(0, 1) == "L") {
-      ui.closeSwitchImg.style.transform = `rotate(90deg)`;
-    } else {
-      ui.closeSwitchImg.style.transform = `rotate(-90deg)`;
-    }
-    if (gameData.slice(1, 2) == "L") {
-      ui.scaleImg.style.transform = `rotate(90deg)`;
-    } else {
-      ui.scaleImg.style.transform = `rotate(-90deg)`;
-    }
-    if (gameData.slice(2) == "L") {
-      ui.farSwitchImg.style.transform = `rotate(90deg)`;
-    } else {
-      ui.farSwitchImg.style.transform = `rotate(-90deg)`;
-    }
+    drawBlueField();
   } else {
-    ui.fieldImg.style.transform = `rotate(-90deg)`;
-    if (gameData.slice(0, 1) == "L") {
-      ui.closeSwitchImg.style.transform = `rotate(-90deg)`;
-    } else {
-      ui.closeSwitchImg.style.transform = `rotate(90deg)`;
-    }
-    if (gameData.slice(1, 2) == "L") {
-      ui.scaleImg.style.transform = `rotate(-90deg)`;
-    } else {
-      ui.scaleImg.style.transform = `rotate(90deg)`;
-    }
-    if (gameData.slice(2) == "L") {
-      ui.farSwitchImg.style.transform = `rotate(-90deg)`;
-    } else {
-      ui.farSwitchImg.style.transform = `rotate(90deg)`;
-    }
+    drawRedField();
   }
-
 }
 
+function drawBlueField() {
+  ui.fieldImg.style.transform = `rotate(90deg)`;
+  if (gameData.slice(0, 1) == "L") {
+    ui.closeSwitchImg.style.transform = `rotate(90deg)`;
+  } else {
+    ui.closeSwitchImg.style.transform = `rotate(-90deg)`;
+  }
+  if (gameData.slice(1, 2) == "L") {
+    ui.scaleImg.style.transform = `rotate(90deg)`;
+  } else {
+    ui.scaleImg.style.transform = `rotate(-90deg)`;
+  }
+  if (gameData.slice(2) == "L") {
+    ui.farSwitchImg.style.transform = `rotate(90deg)`;
+  } else {
+    ui.farSwitchImg.style.transform = `rotate(-90deg)`;
+  }
+}
 
+function drawRedField() {
+  ui.fieldImg.style.transform = `rotate(-90deg)`;
+  if (gameData.slice(0, 1) == "L") {
+    ui.closeSwitchImg.style.transform = `rotate(-90deg)`;
+  } else {
+    ui.closeSwitchImg.style.transform = `rotate(90deg)`;
+  }
+  if (gameData.slice(1, 2) == "L") {
+    ui.scaleImg.style.transform = `rotate(-90deg)`;
+  } else {
+    ui.scaleImg.style.transform = `rotate(90deg)`;
+  }
+  if (gameData.slice(2) == "L") {
+    ui.farSwitchImg.style.transform = `rotate(-90deg)`;
+  } else {
+    ui.farSwitchImg.style.transform = `rotate(90deg)`;
+  }
+}
 // TODO Get alliance (boolean)
 NetworkTables.addKeyListener('/FMSInfo/IsRedAlliance', (key, value) => {
     // Set class active if value is true and unset it if it is false
@@ -198,7 +203,7 @@ NetworkTables.addKeyListener('/SmartDashboard/StormDashboard/Gear', (key, value)
     // Set class active if value is true and unset it if it is false
     // kOn = High_Gear
     ui.gear.innerHTML = 'Gear setting: ' + value;
-    if (value == "kReverse") {
+    if (value === "kReverse") {
       isLowGear = true;
     } else {
       isLowGear = false;
@@ -212,7 +217,7 @@ NetworkTables.addKeyListener('/SmartDashboard/StormDashboard/PTO', (key, value) 
     // Set class active if value is true and unset it if it is false
     // kOn = PTO_Disabled
     ui.pto.innerHTML = 'Power Take Off: ' + value;
-    if (value == "kReverse") {
+    if (value === "kReverse") {
       isPTO = true;
     } else {
       isPTO = false;
@@ -239,7 +244,7 @@ NetworkTables.addKeyListener('/SmartDashboard/StormDashboard/Arm', (key, value) 
     // Set class active if value is true and unset it if it is false
     // kOn = Arm_Up_Final
     ui.arm.innerHTML = 'Arm Position: ' + value;
-    if (value == "kReverse") {
+    if (value === "kReverse") {
       isArmDown = true;
     } else {
       isArmDown = false;
@@ -276,7 +281,7 @@ let countDownTimer = setInterval(function() {
     seconds = "0" + seconds.toString();
   }
 
-  if (timeRemaining == 30) {
+  if (timeRemaining === 30) {
     timer.style.color = `red`;
   }
   timer.innerHTML = minutes + ":" + seconds;
