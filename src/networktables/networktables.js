@@ -82,6 +82,7 @@ var NetworkTables =
                 connectionListeners.push(f);
                 if (immediateNotify)
                     f(connected);
+                return true;
             },
             /**
              * Set a function that will be called whenever any NetworkTables value is changed
@@ -101,6 +102,7 @@ var NetworkTables =
                         keys[key].new = false;
                     }
                 }
+            return true;
             },
             /**
              * Set a function that will be called whenever a value for a particular key is changed in NetworkTables
@@ -124,6 +126,7 @@ var NetworkTables =
                     let temp = keys[key];
                     f(key, temp.val, temp.new);
                 }
+            return true;
             },
             /**
              * Use this to test whether a value is present in the table or not
