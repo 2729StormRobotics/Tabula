@@ -132,15 +132,17 @@ text {
     left: 470px;
 }
 #img-robot-diagram{
-    position: relative;
-    z-index: 1
+    position: absolute;
+    bottom: -40px;
+    right: 10px;
+    z-index: 1;
 }
 #img-gear{
     transform: scale(0.25);
     position: fixed;
     z-index: 2;
     top: 335px;
-    right: 180px;
+    right: 175px;
 }
 #img-wheel-1{
     transform: scale(0.16);

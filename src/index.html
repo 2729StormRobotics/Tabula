@@ -20,7 +20,7 @@
     <div id="camera"></div>
     <!-- The main body of the dashboard, contains the field drawing -->
     <article>
-        <img src="img-src/Field_Final.png" id="img-field" alt="field image" height="400" width="1000">
+        <img src="img-src/Field_Finality.png" id="img-field" alt="field image" height="400" width="1000">
         <img src="img-src/Scale.png" id="img-scale" alt="scale image" height="190" width="50">
         <img src="img-src/Switch.png" id="img-switch-close" alt="close switch" height="164" width="60">
         <img src="img-src/Switch.png" id="img-switch-far" alt="far switch" height="164" width="60">
@@ -30,6 +30,12 @@
     <aside>
         <!-- Example button which toggles /SmartDashboard/exampleValue NetworkTables value.
             The <p> below then says the value. -->
+
+            <div>
+              <input type="color" name="ledColor" value="#ff0000">
+              <script>var x = document.getElementById("ledColor"); </script>
+            </div>
+
         <div id="example-section">
             <button id="example-button">Start Timer</button>
             <p id="example-readout">Value is undefined</p>
@@ -47,10 +53,6 @@
                 <option>No auto modes found</option>
                 <!-- This gets populated by JS -->
             </select>
-        </div>
-        <div>
-            <p>Adjust arm height</p>
-            <input id="arm-position" type="range" min="0" max="1200" value="770">
         </div>
         <!-- Robot drawing -->
         <img id="img-robot-diagram" alt="robot diagram" height="252" width="446">
