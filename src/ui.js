@@ -33,6 +33,18 @@ ui.theme = {
     link: document.getElementById('theme-link')
 };
 
+// Autonomous Selectors
+ui.autoSelectPosition = document.getElementById('auto-select-position');
+ui.autoSelectPreference = document.getElementById('auto-select-preference');
+
+ui.autoSelectPosition.onchange = function() {
+	NetworkTables.setValue('/SmartDashboard/StormDashboard/position', this.value);
+
+};
+ui.autoSelectPreference.onchange = function() {
+	NetworkTables.setValue('/SmartDashboard/autonomous/preference', this.value);
+};
+
 // Key Listeners
 
 let testIfRed;
