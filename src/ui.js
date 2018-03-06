@@ -303,7 +303,7 @@ NetworkTables.addKeyListener('/SmartDashboard/StormDashboard/Gear', (key, value)
     // Set class active if value is true and unset it if it is false
     // kOn = High_Gear
     ui.gear.innerHTML = 'Gear setting: ' + value;
-    if (value === "kReverse") {
+    if (value === "kOff") {
       isLowGear = true;
     } else {
       isLowGear = false;
@@ -317,7 +317,7 @@ NetworkTables.addKeyListener('/SmartDashboard/StormDashboard/PTO', (key, value) 
     // Set class active if value is true and unset it if it is false
     // kOn = PTO_Disabled
     ui.pto.innerHTML = 'Power Take Off: ' + value;
-    if (value === "kReverse") {
+    if (value === "kOff") {
       isPTO = true;
     } else {
       isPTO = false;
@@ -344,7 +344,7 @@ NetworkTables.addKeyListener('/SmartDashboard/StormDashboard/Arm', (key, value) 
     // Set class active if value is true and unset it if it is false
     // kOn = Arm_Up_Final
     ui.arm.innerHTML = 'Arm Position: ' + value;
-    if (value === "kReverse") {
+    if (value === "kOff") {
       isArmDown = true;
     } else {
       isArmDown = false;
@@ -358,7 +358,7 @@ addEventListener('error',(ev)=>{
     ipc.send('windowError',ev);
 });
 
-let timeRemaining = 135;
+let timeRemaining = 31;
 let offsetValue = 0;
 
 ui.example.button.onclick = function() {
@@ -393,6 +393,6 @@ let countDownTimer = setInterval(function() {
   // If the count down is finished, write some text
   if (timeRemaining < 0) {
     clearInterval(countDownTimer);
-    timer.innerHTML = "TIME'S UP";
+    timer.innerHTML = "FINISH";
   }
 }, 1000);
