@@ -33,16 +33,88 @@ ui.theme = {
     link: document.getElementById('theme-link')
 };
 
-// Autonomous Selectors
+// Autonomous Position Selector
 ui.autoSelectPosition = document.getElementById('auto-select-position');
+
+NetworkTables.addKeyListener('/SmartDashboard/Auto Position/options', (key, value) => {
+    // Clear previous list
+    while (ui.autoSelectPosition.firstChild) {
+        ui.autoSelectPosition.removeChild(ui.autoSelectPosition.firstChild);
+    }
+    // Make an option for each autonomous mode and put it in the selector
+    for (i = 0; i < value.length; i++) {
+        var option = document.createElement('option');
+        option.innerHTML = value[i];
+        ui.autoSelectPosition.appendChild(option);
+    }
+    // Set value to the already-selected mode. If there is none, nothing will happen.
+    ui.autoSelectPosition.value = NetworkTables.getValue('/SmartDashboard/Auto Position/selected');
+});
+
+NetworkTables.addKeyListener('/SmartDashboard/Auto Position/selected', (key, value) => {
+    ui.autoSelectPosition.value = value;
+});
+
+// Update NetworkTables when autonomous selector is changed
+ui.autoSelectPosition.onchange = function() {
+	NetworkTables.putValue('/SmartDashboard/Auto Position/selected', this.value);
+  console.log(this.value);
+};
+
+// Autonomous Preference Selector
 ui.autoSelectPreference = document.getElementById('auto-select-preference');
 
-ui.autoSelectPosition.onchange = function() {
-	NetworkTables.setValue('/SmartDashboard/StormDashboard/position', this.value);
+NetworkTables.addKeyListener('/SmartDashboard/Auto Preference/options', (key, value) => {
+    // Clear previous list
+    while (ui.autoSelectPreference.firstChild) {
+        ui.autoSelectPreference.removeChild(ui.autoSelectPreference.firstChild);
+    }
+    // Make an option for each autonomous mode and put it in the selector
+    for (i = 0; i < value.length; i++) {
+        var option = document.createElement('option');
+        option.innerHTML = value[i];
+        ui.autoSelectPreference.appendChild(option);
+    }
+    // Set value to the already-selected mode. If there is none, nothing will happen.
+    ui.autoSelectPreference.value = NetworkTables.getValue('/SmartDashboard/Auto Preference/selected');
+});
 
-};
+NetworkTables.addKeyListener('/SmartDashboard/Auto Preference/selected', (key, value) => {
+    ui.autoSelectPreference.value = value;
+});
+
+// Update NetworkTables when autonomous selector is changed
 ui.autoSelectPreference.onchange = function() {
-	NetworkTables.setValue('/SmartDashboard/autonomous/preference', this.value);
+	NetworkTables.putValue('/SmartDashboard/Auto Preference/selected', this.value);
+  console.log(this.value);
+};
+
+// Autonomous Test Selector
+ui.autoSelectTest = document.getElementById('auto-select-test');
+
+NetworkTables.addKeyListener('/SmartDashboard/Test Autonomous Modes/options', (key, value) => {
+    // Clear previous list
+    while (ui.autoSelectTest.firstChild) {
+        ui.autoSelectTest.removeChild(ui.autoSelectTest.firstChild);
+    }
+    // Make an option for each autonomous mode and put it in the selector
+    for (i = 0; i < value.length; i++) {
+        var option = document.createElement('option');
+        option.innerHTML = value[i];
+        ui.autoSelectTest.appendChild(option);
+    }
+    // Set value to the already-selected mode. If there is none, nothing will happen.
+    ui.autoSelectTest.value = NetworkTables.getValue('/SmartDashboard/Test Autonomous Modes/selected');
+});
+
+NetworkTables.addKeyListener('/SmartDashboard/Test Autonomous Modes/selected', (key, value) => {
+    ui.autoSelectTest.value = value;
+});
+
+// Update NetworkTables when autonomous selector is changed
+ui.autoSelectTest.onchange = function() {
+	NetworkTables.putValue('/SmartDashboard/Test Autonomous Modes/selected', this.value);
+  console.log(this.value);
 };
 
 // Key Listeners
