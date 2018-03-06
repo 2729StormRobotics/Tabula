@@ -28,6 +28,11 @@ let ui = {
 
 };
 
+ui.theme = {
+    select: document.getElementById('theme-select'),
+    link: document.getElementById('theme-link')
+};
+
 // Key Listeners
 
 let testIfRed;
@@ -123,6 +128,15 @@ function drawRobot() {
 
 drawRobot();
 
+// method that changes the ui based on the corresponding alliance
+function drawAllianceUI() {
+  if (testIfRed) {
+    ui.theme.link.href = 'css/' + 'red' + '.css';
+  } else {
+    ui.theme.link.href = 'css/' + 'blue' + '.css';
+  }
+}
+
 // method that draws the field with corresponding alliance
 function drawPowerUpField() {
   if (testIfRed) {
@@ -169,6 +183,8 @@ function drawRedField() {
     ui.farSwitchImg.style.transform = `rotate(90deg)`;
   }
 }
+
+
 // Get alliance (boolean)
 NetworkTables.addKeyListener('/FMSInfo/IsRedAlliance', (key, value) => {
     // Set class active if value is true and unset it if it is false
@@ -177,6 +193,7 @@ NetworkTables.addKeyListener('/FMSInfo/IsRedAlliance', (key, value) => {
 
 
     drawPowerUpField();
+    drawAllianceUI();
 
 });
 
@@ -257,7 +274,7 @@ addEventListener('error',(ev)=>{
     ipc.send('windowError',ev);
 });
 
-let timeRemaining = 45;
+let timeRemaining = 135;
 let offsetValue = 0;
 
 ui.example.button.onclick = function() {
@@ -281,7 +298,7 @@ let countDownTimer = setInterval(function() {
   }
 
   if (timeRemaining === 30) {
-    timer.style.color = `red`;
+    timer.style.color = `orange`;
   }
   timer.innerHTML = minutes + ":" + seconds;
 

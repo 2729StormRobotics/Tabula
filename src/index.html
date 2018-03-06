@@ -5,6 +5,9 @@
     <meta charset="utf-8">
     <title>FRC Dashboard</title>
     <link href="css/style.css" rel="stylesheet">
+    <!-- href is added by JS if/when user chooses the theme. -->
+    <link id="theme-link" rel="stylesheet" href>
+
     <link rel="shortcut icon" href="https://i2.wp.com/stormroboticsnj.org/wp-content/uploads/2018/02/storm-circle-10th-anniversary-black.png?ssl=1"/>
 </head>
 
@@ -31,10 +34,9 @@
         <!-- Example button which toggles /SmartDashboard/exampleValue NetworkTables value.
             The <p> below then says the value. -->
 
-            <div>
-              <input type="color" name="ledColor" value="#ff0000">
-              <script>var x = document.getElementById("ledColor"); </script>
-            </div>
+        <div>
+            <input type="color" name="ledColor" value="#ff0000">
+        </div>
 
         <div id="example-section">
             <button id="example-button">Start Timer</button>
