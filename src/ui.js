@@ -3,17 +3,10 @@ let ui = {
     timer: document.getElementById('timer'),
     robotState: document.getElementById('robot-state').firstChild,
     example: {
-        button: document.getElementById('example-button'),
-        readout: document.getElementById('example-readout').firstChild
+        button: document.getElementById('example-button')
     },
     autoSelect: document.getElementById('auto-select'),
     armPosition: document.getElementById('arm-position'),
-    fieldInfo: document.getElementById('telem-field-info'),
-    alliance: document.getElementById('telem-alliance'),
-    gear: document.getElementById('telem-gear'),
-    pto: document.getElementById('telem-pto'),
-    accelerationOutput: document.getElementById('telem-acceleration'),
-    arm: document.getElementById('telem-arm'),
     fieldImg: document.getElementById('img-field'),
     scaleImg: document.getElementById('img-scale'),
     closeSwitchImg: document.getElementById('img-switch-close'),
@@ -142,7 +135,6 @@ let DEF_FAR_SWITCH_Y = 4;
 let OFFSET_X = 220;
 let OFFSET_Y = 2;
 
-ui.gear.innerHTML = "NOT A TEST";
 
 
 ui.fieldImg.style.left = (OFFSET_X + DEF_FIELD_X) + "px";
@@ -272,7 +264,6 @@ function drawRedField() {
 // Get alliance (boolean)
 NetworkTables.addKeyListener('/FMSInfo/IsRedAlliance', (key, value) => {
     // Set class active if value is true and unset it if it is false
-    ui.alliance.innerHTML = 'Is Red Alliance: ' + value;
     testIfRed = value;
 
 
@@ -287,7 +278,6 @@ NetworkTables.addKeyListener('/FMSInfo/IsRedAlliance', (key, value) => {
 // Get field information (string)
 NetworkTables.addKeyListener('/FMSInfo/GameSpecificMessage', (key, value) => {
     // Set class active if value is true and unset it if it is false
-    ui.fieldInfo.innerHTML = 'Field Data: ' + value;
     gameData = value;
 
     drawPowerUpField();
@@ -301,9 +291,8 @@ NetworkTables.addKeyListener('/FMSInfo/GameSpecificMessage', (key, value) => {
 // Get Gear status (boolean)
 NetworkTables.addKeyListener('/SmartDashboard/StormDashboard/Gear', (key, value) => {
     // Set class active if value is true and unset it if it is false
-    // kOn = High_Gear
-    ui.gear.innerHTML = 'Gear setting: ' + value;
-    if (value === "kOff") {
+    // kForward = High_Gear
+    if (value === "kReverse") {
       isLowGear = true;
     } else {
       isLowGear = false;
@@ -315,9 +304,8 @@ NetworkTables.addKeyListener('/SmartDashboard/StormDashboard/Gear', (key, value)
 // Get PTO status (boolean)
 NetworkTables.addKeyListener('/SmartDashboard/StormDashboard/PTO', (key, value) => {
     // Set class active if value is true and unset it if it is false
-    // kOn = PTO_Disabled
-    ui.pto.innerHTML = 'Power Take Off: ' + value;
-    if (value === "kOff") {
+    // kForward = PTO_Disabled
+    if (value === "kReverse") {
       isPTO = true;
     } else {
       isPTO = false;
@@ -329,7 +317,6 @@ NetworkTables.addKeyListener('/SmartDashboard/StormDashboard/PTO', (key, value) 
 // Get Accel toggle (boolean)
 NetworkTables.addKeyListener('/SmartDashboard/StormDashboard/Acceleration', (key, value) => {
     // Set class active if value is true and unset it if it is false
-    ui.accelerationOutput.innerHTML = 'Acceleration: ' + value;
     if (value) {
       isAcceleration = true;
     } else {
@@ -342,9 +329,8 @@ NetworkTables.addKeyListener('/SmartDashboard/StormDashboard/Acceleration', (key
 // Get Arm position (boooooolean)
 NetworkTables.addKeyListener('/SmartDashboard/StormDashboard/Arm', (key, value) => {
     // Set class active if value is true and unset it if it is false
-    // kOn = Arm_Up_Final
-    ui.arm.innerHTML = 'Arm Position: ' + value;
-    if (value === "kOff") {
+    // kForward = Arm_Up_Final
+    if (value === "kReverse") {
       isArmDown = true;
     } else {
       isArmDown = false;
