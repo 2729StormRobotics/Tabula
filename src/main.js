@@ -17,7 +17,6 @@ const BrowserWindow = electron.BrowserWindow;
 /** Module for receiving messages from the BrowserWindow */
 const ipc = electron.ipcMain;
 
-require('electron-debug')({showDevTools: true});
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
