@@ -2,9 +2,6 @@
 let ui = {
     timer: document.getElementById('timer'),
     robotState: document.getElementById('robot-state').firstChild,
-    example: {
-        button: document.getElementById('example-button')
-    },
     autoSelect: document.getElementById('auto-select'),
     armPosition: document.getElementById('arm-position'),
     fieldImg: document.getElementById('img-field'),
@@ -135,7 +132,9 @@ let DEF_FAR_SWITCH_Y = 4;
 let OFFSET_X = 220;
 let OFFSET_Y = 2;
 
-
+// Timer variables
+let timeRemaining = 135;
+let offsetValue = 0;
 
 ui.fieldImg.style.left = (OFFSET_X + DEF_FIELD_X) + "px";
 ui.scaleImg.style.left = (OFFSET_X + DEF_SCALE_X) + "px";
@@ -284,7 +283,14 @@ NetworkTables.addKeyListener('/FMSInfo/GameSpecificMessage', (key, value) => {
 
 });
 
+// Get match start information (boolen)
+NetworkTables.addKeyListener('/StormDashboard/MatchStarted', (key, value) => {
+    // Set class active if value is true and unset it if it is false
+    if (value === true) {
+      offsetValue = 1;
+    }
 
+});
 
 
 
@@ -344,13 +350,8 @@ addEventListener('error',(ev)=>{
     ipc.send('windowError',ev);
 });
 
-let timeRemaining = 31;
-let offsetValue = 0;
 
-ui.example.button.onclick = function() {
-    // Starts the timer
-    offsetValue = 1;
-};
+
 
 // Update the count down every 1 second
 let countDownTimer = setInterval(function() {
