@@ -100,11 +100,10 @@ text {
     stroke: none;
     fill: white;
 }
-#gyro {
-    width: 175px;
-    height: 175px;
-    margin-left: 30px;
-    margin-top: 15px;
+#robot-state {
+    position: absolute;
+    left: 340px;
+    z-index: 2;
 }
 #img-field{
 
