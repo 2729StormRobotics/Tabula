@@ -135,7 +135,7 @@ let OFFSET_Y = 2;
 // Timer variables
 let timeRemaining = 150;
 let offsetValue = 0;
-timer.style.color = `green`;
+timer.style.color = `white`;
 
 ui.fieldImg.style.left = (OFFSET_X + DEF_FIELD_X) + "px";
 ui.scaleImg.style.left = (OFFSET_X + DEF_SCALE_X) + "px";
@@ -270,6 +270,7 @@ NetworkTables.addKeyListener('/FMSInfo/IsRedAlliance', (key, value) => {
     drawPowerUpField();
     drawAllianceUI();
     offsetValue = 1;
+    timer.style.color = `white`;
 });
 
 
