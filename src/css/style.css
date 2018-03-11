@@ -70,10 +70,10 @@ header {
 #camera {
     padding: 0;
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 530px;
-    height: 80vh;
+    bottom: 20vh;
+    left: 132.5px;
+    width: 265px;
+    height: 40vh;
     overflow: hidden;
     background-color: #333;
     z-index: 1;
