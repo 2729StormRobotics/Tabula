@@ -12,16 +12,35 @@ let ui = {
     wheel2: document.getElementById('img-wheel-2'),
     wheel3: document.getElementById('img-wheel-3'),
     gearReadout: document.getElementById('img-gear'),
-    robotDiagram: document.getElementById('img-robot-diagram')
-
+    robotDiagram: document.getElementById('img-robot-diagram'),
+    powerCube: document.getElementById('power-cube')
 
 
 };
+
 
 ui.theme = {
     select: document.getElementById('theme-select'),
     link: document.getElementById('theme-link')
 };
+
+// Power Cube Detector
+
+let isCubeIntake = true;
+
+function drawPowerUpCube() {
+  ui.fieldImg.style.transform = `rotate(90deg)`;
+  if (isCubeIntake) {
+    ui.powerCube.style.background = `#EF0`;
+  } else {
+    ui.powerCube.style.background = `#444`;
+  }
+}
+
+NetworkTables.addKeyListener('/SmartDashboard/ADD_VALUE_HERE', (key, value) => {
+    isCubeIntake = value;
+    drawPowerUpCube();
+});
 
 // Autonomous Position Selector
 ui.autoSelectPosition = document.getElementById('auto-select-position');
@@ -107,7 +126,7 @@ ui.autoSelectTest.onchange = function() {
   console.log(this.value);
 };
 
-// Key Listeners
+// Field Drawing variables
 
 let testIfRed;
 let gameData = "XXX";

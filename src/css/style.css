@@ -59,7 +59,15 @@ body > * {
     font-size: 20vh;
     line-height: .8;
 }
+#power-cube {
 
+    color: black;
+    height: 75px;
+    width: 90px;
+    top: 140px;
+    position: relative;
+
+}
 header {
     width: 20vw;
     height: 20vh;
