@@ -37,7 +37,7 @@ function drawPowerUpCube() {
   }
 }
 
-NetworkTables.addKeyListener('/SmartDashboard/ADD_VALUE_HERE', (key, value) => {
+NetworkTables.addKeyListener('/SmartDashboard/StormDashboard/CubeIn', (key, value) => {
     isCubeIntake = value;
     drawPowerUpCube();
 });
