@@ -11,6 +11,7 @@ let ui = {
     wheel1: document.getElementById('img-wheel-1'),
     wheel2: document.getElementById('img-wheel-2'),
     wheel3: document.getElementById('img-wheel-3'),
+    wheelArm: document.getElementById('img-wheel-arms'),
     gearReadout: document.getElementById('img-gear'),
     robotDiagram: document.getElementById('img-robot-diagram'),
     powerCube: document.getElementById('power-cube')
@@ -24,12 +25,34 @@ ui.theme = {
     link: document.getElementById('theme-link')
 };
 
+// Arm Spinning Detector
+
+let isArmSpinning = true;
+
+function drawArms() {
+  if (isArmSpinning) {
+    ui.wheelArm.src="img-src/Acceleration_Enabled.png";
+  } else {
+    ui.wheelArm.src="img-src/Acceleration_Disabled.png";
+  }
+}
+
+NetworkTables.addKeyListener('/SmartDashboard/StormDashboard/InputState', (key, value) => {
+    if (value.toUpperCase() === "IDLE") {
+      isArmSpinning = false;
+    } else {
+      isArmSpinning = true;
+    }
+    drawArms();
+});
+
+drawArms();
+
 // Power Cube Detector
 
 let isCubeIntake = true;
 
 function drawPowerUpCube() {
-  ui.fieldImg.style.transform = `rotate(90deg)`;
   if (isCubeIntake) {
     ui.powerCube.style.background = `#EF0`;
   } else {

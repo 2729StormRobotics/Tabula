@@ -166,6 +166,13 @@ text {
     position: fixed;
     z-index: 3;
 }
+#img-wheel-arms{
+    transform: scale(0.16);
+    position: fixed;
+    z-index: 3;
+    bottom: 25px;
+    left: 750px;
+}
 #team {
     font-size: 28px;
     letter-spacing: -1px;
