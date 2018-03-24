@@ -121,6 +121,34 @@ ui.autoSelectPreference.onchange = function() {
   console.log(this.value);
 };
 
+// Autonomous Cross Selector
+ui.autoSelectCross = document.getElementById('auto-select-cross');
+
+NetworkTables.addKeyListener('/SmartDashboard/Cross Preference/options', (key, value) => {
+    // Clear previous list
+    while (ui.autoSelectCross.firstChild) {
+        ui.autoSelectCross.removeChild(ui.autoSelectCross.firstChild);
+    }
+    // Make an option for each autonomous mode and put it in the selector
+    for (i = 0; i < value.length; i++) {
+        var option = document.createElement('option');
+        option.innerHTML = value[i];
+        ui.autoSelectCross.appendChild(option);
+    }
+    // Set value to the already-selected mode. If there is none, nothing will happen.
+    ui.autoSelectCross.value = NetworkTables.getValue('/SmartDashboard/Cross Preference/selected');
+});
+
+NetworkTables.addKeyListener('/SmartDashboard/Cross Preference/selected', (key, value) => {
+    ui.autoSelectCross.value = value;
+});
+
+// Update NetworkTables when autonomous selector is changed
+ui.autoSelectCross.onchange = function() {
+	NetworkTables.putValue('/SmartDashboard/Cross Preference/selected', this.value);
+  console.log(this.value);
+};
+
 // Autonomous Test Selector
 ui.autoSelectTest = document.getElementById('auto-select-test');
 
