@@ -3,6 +3,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 const electron = require('electron');
 const wpilib_NT = require('wpilib-nt-client');
+const Store = require('electron-store');
 const client = new wpilib_NT.Client();
 
 // The client will try to reconnect after 1 second
@@ -16,6 +17,9 @@ const BrowserWindow = electron.BrowserWindow;
 
 /** Module for receiving messages from the BrowserWindow */
 const ipc = electron.ipcMain;
+
+/** Module for storing user autonomous selections **/
+const store = new Store();
 
 
 // Keep a global reference of the window object, if you don't, the window will

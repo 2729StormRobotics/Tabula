@@ -25,6 +25,7 @@
     "electron-debug": "^1.5.0"
   },
   "dependencies": {
+    "electron-store": "^2.0.0",
     "wpilib-nt-client": "^1.7.1"
   }
 }
