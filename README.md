@@ -4,6 +4,8 @@
 
 [![Build Status](https://travis-ci.org/2729StormRobotics/Tabula.svg?branch=master)](https://travis-ci.org/2729StormRobotics/Tabula)
 
+[![License](https://img.shields.io/badge/License-MIT-orange.svg)](https://opensource.org/licenses/MIT)
+
 [![Known Vulnerabilities](https://snyk.io/test/github/2729StormRobotics/Tabula/badge.svg)](https://snyk.io/test/github/2729StormRobotics/Tabula)
 
 [![SonarCloud Status](https://sonarcloud.io/api/project_badges/measure?project=Tabula&metric=alert_status)](https://sonarcloud.io/dashboard?id=Tabula)
