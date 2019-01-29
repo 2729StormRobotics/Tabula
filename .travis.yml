@@ -27,3 +27,4 @@ cache:
   directories:
     - "node_modules"
     - "$HOME/.sonar/cache/"
+    - "$HOME/.sonarscanner/cache"
