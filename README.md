@@ -2,9 +2,9 @@
 
 # STORM Dashboard
 
-[![Build Status](https://travis-ci.org/2729StormRobotics/Tabula.svg?branch=master)](https://travis-ci.org/2729StormRobotics/Tabula)
-
 [![License](https://img.shields.io/badge/License-MIT-orange.svg)](https://opensource.org/licenses/MIT)
+
+[![Build Status](https://travis-ci.org/2729StormRobotics/Tabula.svg?branch=master)](https://travis-ci.org/2729StormRobotics/Tabula)
 
 [![Known Vulnerabilities](https://snyk.io/test/github/2729StormRobotics/Tabula/badge.svg)](https://snyk.io/test/github/2729StormRobotics/Tabula)
 
