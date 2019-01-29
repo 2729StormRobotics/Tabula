@@ -18,6 +18,7 @@ jdk:
   - openjdk11
 
 script:
+  - git fetch --unshallow
   - npm build
   - npm test
   - sonar-scanner
