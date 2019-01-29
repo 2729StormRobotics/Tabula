@@ -4,19 +4,32 @@
 
     // List of extensions which should be recommended for users of this workspace.
     "recommendations": [
-        "EditorConfig.EditorConfig",
-        "msjsdiag.debugger-for-chrome",
-        "hbenl.vscode-firefox-debug",
-        "xabikos.JavaScriptSnippets",
-        "hbenl.vscode-test-explorer",
-        "hbenl.vscode-mocha-test-adapter",
-        "dbaeumer.vscode-eslint",
-        "eg2.tslint",
-        "vsmobile.vscode-react-native",
         "christian-kohler.npm-intellisense",
+        "dbaeumer.vscode-eslint",
+        "donjayamanne.githistory",
+        "EditorConfig.EditorConfig",
+        "eg2.tslint",
+        "eg2.vscode-npm-script",
+        "gruntfuggly.todo-tree",
+        "hbenl.vscode-firefox-debug",
+        "hbenl.vscode-mocha-test-adapter",
+        "hbenl.vscode-test-explorer-liveshare",
+        "hbenl.vscode-test-explorer",
+        "ibm.output-colorizer",
         "joelday.docthis",
+        "ms-devskim.vscode-devskim",
+        "ms-vscode.github-issues-prs",
+        "ms-vsliveshare.vsliveshare",
+        "msjsdiag.debugger-for-chrome",
+        "pflannery.vscode-versionlens",
+        "redhat.vscode-xml",
+        "redhat.vscode-yaml",
         "shinnn.stylelint",
-        "pflannery.vscode-versionlens"
+        "sonarsource.sonarlint-vscode",
+        "tyriar.sort-lines",
+        "visualstudioexptteam.vscodeintellicode",
+        "xabikos.JavaScriptSnippets",
+        "ziyasal.vscode-open-in-github"
     ],
     // List of extensions recommended by VS Code that should not be recommended for users of this workspace.
     "unwantedRecommendations": [
