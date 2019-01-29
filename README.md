@@ -4,6 +4,8 @@
 
 [![Build Status](https://travis-ci.org/2729StormRobotics/Tabula.svg?branch=master)](https://travis-ci.org/2729StormRobotics/Tabula)
 
+[![Known Vulnerabilities](https://snyk.io/test/github/2729StormRobotics/Tabula/badge.svg)](https://snyk.io/test/github/2729StormRobotics/Tabula)
+
 [![SonarCloud Status](https://sonarcloud.io/api/project_badges/measure?project=Tabula&metric=alert_status)](https://sonarcloud.io/dashboard?id=Tabula)
 [![SonarCloud Maintainability](https://sonarcloud.io/api/project_badges/measure?project=Tabula&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=Tabula)
 [![SonarCloud Security](https://sonarcloud.io/api/project_badges/measure?project=Tabula&metric=security_rating)](https://sonarcloud.io/dashboard?id=Tabula)
