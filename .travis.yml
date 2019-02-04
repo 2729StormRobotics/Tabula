@@ -24,6 +24,7 @@ script:
   - sonar-scanner
 
 cache:
+  branch: bash
+  npm: true
   directories:
-    - "node_modules"
     - "$HOME/.sonar/cache/"
