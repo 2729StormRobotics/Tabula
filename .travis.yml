@@ -20,6 +20,7 @@ script:
 cache:
   branch: bash
   npm: true
+  yarn: true
   directories:
   - "$HOME/.sonar/cache/"
 notifications:
