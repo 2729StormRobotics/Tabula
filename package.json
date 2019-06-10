@@ -5,10 +5,11 @@
   "description": "Robot control dashboard boilerplate for FRC.",
   "main": "src/main.js",
   "scripts": {
+    "lint": "eslint --fix \"./src/**/*.js\"",
     "start": "electron .",
-    "package-mac": "electron-packager . --platform=darwin --icon=images/icon.icns --out dist/",
-    "package-linux": "electron-packager . --platform=linux --icon=images/icon.png --out dist/",
-    "package-win": "electron-packager . --platform=win32 --icon=images/icon.ico --out dist/"
+    "package:mac": "electron-packager . --platform=darwin --icon=images/icon.icns --out dist/",
+    "package:linux": "electron-packager . --platform=linux --icon=images/icon.png --out dist/",
+    "package:win": "electron-packager . --platform=win32 --icon=images/icon.ico --out dist/"
   },
   "repository": {
     "type": "git",
@@ -21,13 +22,14 @@
   },
   "homepage": "http://frcdashboard.github.io",
   "devDependencies": {
-    "electron": "^4.0.2",
-    "electron-debug": "^2.1.0",
-    "electron-packager": "^13.0.1",
-    "eslint": "^5.12.1"
+    "electron": "^5.0.3",
+    "electron-debug": "^3.0.0",
+    "electron-packager": "^13.1.1",
+    "eslint": "^5.16.0"
   },
   "dependencies": {
-    "electron-store": "^2.0.0",
-    "wpilib-nt-client": "^1.7.1"
+    "electron-store": "^3.2.0",
+    "wpilib-nt-client": "^1.7.1",
+    "yarn": "^1.16.0"
   }
 }

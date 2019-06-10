@@ -20,9 +20,9 @@ STORM Dashboard is team 2729's implementation of FRCDashboard. Some changes have
 
 ## Setup and Build
 
-You'll need [`nodejs`](https://nodejs.org) & [`npm`](https://npmjs.com).
+You'll need [`nodejs`](https://nodejs.org) & [`yarn`](https://yarnpkg.com).
 
-Before running your dashboard, you'll need to install the node dependencies by `cd`ing into the dashboard directory and running `npm install`.
+Before running your dashboard, you'll need to install the node dependencies by `cd`ing into the dashboard directory and running `yarn install`.
 
 ### Configuration/Sources
 

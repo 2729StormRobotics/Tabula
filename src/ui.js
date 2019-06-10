@@ -1,28 +1,28 @@
 // Define UI elements
 let ui = {
-    timer: document.getElementById('timer'),
-    robotState: document.getElementById('robot-state').firstChild,
-    autoSelect: document.getElementById('auto-select'),
-    armPosition: document.getElementById('arm-position'),
-    fieldImg: document.getElementById('img-field'),
-    scaleImg: document.getElementById('img-scale'),
-    closeSwitchImg: document.getElementById('img-switch-close'),
-    farSwitchImg: document.getElementById('img-switch-far'),
-    wheel1: document.getElementById('img-wheel-1'),
-    wheel2: document.getElementById('img-wheel-2'),
-    wheel3: document.getElementById('img-wheel-3'),
-    wheelArm: document.getElementById('img-wheel-arms'),
-    gearReadout: document.getElementById('img-gear'),
-    robotDiagram: document.getElementById('img-robot-diagram'),
-    powerCube: document.getElementById('power-cube')
+  timer: document.getElementById("timer"),
+  robotState: document.getElementById("robot-state").firstChild,
+  autoSelect: document.getElementById("auto-select"),
+  armPosition: document.getElementById("arm-position"),
+  fieldImg: document.getElementById("img-field"),
+  scaleImg: document.getElementById("img-scale"),
+  closeSwitchImg: document.getElementById("img-switch-close"),
+  farSwitchImg: document.getElementById("img-switch-far"),
+  wheel1: document.getElementById("img-wheel-1"),
+  wheel2: document.getElementById("img-wheel-2"),
+  wheel3: document.getElementById("img-wheel-3"),
+  wheelArm: document.getElementById("img-wheel-arms"),
+  gearReadout: document.getElementById("img-gear"),
+  robotDiagram: document.getElementById("img-robot-diagram"),
+  powerCube: document.getElementById("power-cube")
 
 
 };
 
 
 ui.theme = {
-    select: document.getElementById('theme-select'),
-    link: document.getElementById('theme-link')
+  select: document.getElementById("theme-select"),
+  link: document.getElementById("theme-link")
 };
 
 // Arm Spinning Detector
@@ -37,13 +37,13 @@ function drawArms() {
   }
 }
 
-NetworkTables.addKeyListener('/SmartDashboard/StormDashboard/InputState', (key, value) => {
-    if (value.toUpperCase() === "IDLE") {
-      isArmSpinning = false;
-    } else {
-      isArmSpinning = true;
-    }
-    drawArms();
+NetworkTables.addKeyListener("/SmartDashboard/StormDashboard/InputState", (key, value) => {
+  if (value.toUpperCase() === "IDLE") {
+    isArmSpinning = false;
+  } else {
+    isArmSpinning = true;
+  }
+  drawArms();
 });
 
 drawArms();
@@ -60,120 +60,120 @@ function drawPowerUpCube() {
   }
 }
 
-NetworkTables.addKeyListener('/SmartDashboard/StormDashboard/CubeIn', (key, value) => {
-    isCubeIntake = value;
-    drawPowerUpCube();
+NetworkTables.addKeyListener("/SmartDashboard/StormDashboard/CubeIn", (key, value) => {
+  isCubeIntake = value;
+  drawPowerUpCube();
 });
 
 // Autonomous Position Selector
-ui.autoSelectPosition = document.getElementById('auto-select-position');
+ui.autoSelectPosition = document.getElementById("auto-select-position");
 
-NetworkTables.addKeyListener('/SmartDashboard/Auto Position/options', (key, value) => {
-    // Clear previous list
-    while (ui.autoSelectPosition.firstChild) {
-        ui.autoSelectPosition.removeChild(ui.autoSelectPosition.firstChild);
-    }
-    // Make an option for each autonomous mode and put it in the selector
-    for (i = 0; i < value.length; i++) {
-        var option = document.createElement('option');
-        option.innerHTML = value[i];
-        ui.autoSelectPosition.appendChild(option);
-    }
-    // Set value to the already-selected mode. If there is none, nothing will happen.
-    ui.autoSelectPosition.value = NetworkTables.getValue('/SmartDashboard/Auto Position/selected');
+NetworkTables.addKeyListener("/SmartDashboard/Auto Position/options", (key, value) => {
+  // Clear previous list
+  while (ui.autoSelectPosition.firstChild) {
+    ui.autoSelectPosition.removeChild(ui.autoSelectPosition.firstChild);
+  }
+  // Make an option for each autonomous mode and put it in the selector
+  for (i = 0; i < value.length; i++) {
+    var option = document.createElement("option");
+    option.innerHTML = value[i];
+    ui.autoSelectPosition.appendChild(option);
+  }
+  // Set value to the already-selected mode. If there is none, nothing will happen.
+  ui.autoSelectPosition.value = NetworkTables.getValue("/SmartDashboard/Auto Position/selected");
 });
 
-NetworkTables.addKeyListener('/SmartDashboard/Auto Position/selected', (key, value) => {
-    ui.autoSelectPosition.value = value;
+NetworkTables.addKeyListener("/SmartDashboard/Auto Position/selected", (key, value) => {
+  ui.autoSelectPosition.value = value;
 });
 
 // Update NetworkTables when autonomous selector is changed
 ui.autoSelectPosition.onchange = function() {
-	NetworkTables.putValue('/SmartDashboard/Auto Position/selected', this.value);
+  NetworkTables.putValue("/SmartDashboard/Auto Position/selected", this.value);
   console.log(this.value);
 };
 
 // Autonomous Preference Selector
-ui.autoSelectPreference = document.getElementById('auto-select-preference');
+ui.autoSelectPreference = document.getElementById("auto-select-preference");
 
-NetworkTables.addKeyListener('/SmartDashboard/Auto Preference/options', (key, value) => {
-    // Clear previous list
-    while (ui.autoSelectPreference.firstChild) {
-        ui.autoSelectPreference.removeChild(ui.autoSelectPreference.firstChild);
-    }
-    // Make an option for each autonomous mode and put it in the selector
-    for (i = 0; i < value.length; i++) {
-        var option = document.createElement('option');
-        option.innerHTML = value[i];
-        ui.autoSelectPreference.appendChild(option);
-    }
-    // Set value to the already-selected mode. If there is none, nothing will happen.
-    ui.autoSelectPreference.value = NetworkTables.getValue('/SmartDashboard/Auto Preference/selected');
+NetworkTables.addKeyListener("/SmartDashboard/Auto Preference/options", (key, value) => {
+  // Clear previous list
+  while (ui.autoSelectPreference.firstChild) {
+    ui.autoSelectPreference.removeChild(ui.autoSelectPreference.firstChild);
+  }
+  // Make an option for each autonomous mode and put it in the selector
+  for (i = 0; i < value.length; i++) {
+    var option = document.createElement("option");
+    option.innerHTML = value[i];
+    ui.autoSelectPreference.appendChild(option);
+  }
+  // Set value to the already-selected mode. If there is none, nothing will happen.
+  ui.autoSelectPreference.value = NetworkTables.getValue("/SmartDashboard/Auto Preference/selected");
 });
 
-NetworkTables.addKeyListener('/SmartDashboard/Auto Preference/selected', (key, value) => {
-    ui.autoSelectPreference.value = value;
+NetworkTables.addKeyListener("/SmartDashboard/Auto Preference/selected", (key, value) => {
+  ui.autoSelectPreference.value = value;
 });
 
 // Update NetworkTables when autonomous selector is changed
 ui.autoSelectPreference.onchange = function() {
-	NetworkTables.putValue('/SmartDashboard/Auto Preference/selected', this.value);
+  NetworkTables.putValue("/SmartDashboard/Auto Preference/selected", this.value);
   console.log(this.value);
 };
 
 // Autonomous Cross Selector
-ui.autoSelectCross = document.getElementById('auto-select-cross');
+ui.autoSelectCross = document.getElementById("auto-select-cross");
 
-NetworkTables.addKeyListener('/SmartDashboard/Cross Preference/options', (key, value) => {
-    // Clear previous list
-    while (ui.autoSelectCross.firstChild) {
-        ui.autoSelectCross.removeChild(ui.autoSelectCross.firstChild);
-    }
-    // Make an option for each autonomous mode and put it in the selector
-    for (i = 0; i < value.length; i++) {
-        var option = document.createElement('option');
-        option.innerHTML = value[i];
-        ui.autoSelectCross.appendChild(option);
-    }
-    // Set value to the already-selected mode. If there is none, nothing will happen.
-    ui.autoSelectCross.value = NetworkTables.getValue('/SmartDashboard/Cross Preference/selected');
+NetworkTables.addKeyListener("/SmartDashboard/Cross Preference/options", (key, value) => {
+  // Clear previous list
+  while (ui.autoSelectCross.firstChild) {
+    ui.autoSelectCross.removeChild(ui.autoSelectCross.firstChild);
+  }
+  // Make an option for each autonomous mode and put it in the selector
+  for (i = 0; i < value.length; i++) {
+    var option = document.createElement("option");
+    option.innerHTML = value[i];
+    ui.autoSelectCross.appendChild(option);
+  }
+  // Set value to the already-selected mode. If there is none, nothing will happen.
+  ui.autoSelectCross.value = NetworkTables.getValue("/SmartDashboard/Cross Preference/selected");
 });
 
-NetworkTables.addKeyListener('/SmartDashboard/Cross Preference/selected', (key, value) => {
-    ui.autoSelectCross.value = value;
+NetworkTables.addKeyListener("/SmartDashboard/Cross Preference/selected", (key, value) => {
+  ui.autoSelectCross.value = value;
 });
 
 // Update NetworkTables when autonomous selector is changed
 ui.autoSelectCross.onchange = function() {
-	NetworkTables.putValue('/SmartDashboard/Cross Preference/selected', this.value);
+  NetworkTables.putValue("/SmartDashboard/Cross Preference/selected", this.value);
   console.log(this.value);
 };
 
 // Autonomous Test Selector
-ui.autoSelectTest = document.getElementById('auto-select-test');
+ui.autoSelectTest = document.getElementById("auto-select-test");
 
-NetworkTables.addKeyListener('/SmartDashboard/Test Autonomous Modes/options', (key, value) => {
-    // Clear previous list
-    while (ui.autoSelectTest.firstChild) {
-        ui.autoSelectTest.removeChild(ui.autoSelectTest.firstChild);
-    }
-    // Make an option for each autonomous mode and put it in the selector
-    for (i = 0; i < value.length; i++) {
-        var option = document.createElement('option');
-        option.innerHTML = value[i];
-        ui.autoSelectTest.appendChild(option);
-    }
-    // Set value to the already-selected mode. If there is none, nothing will happen.
-    ui.autoSelectTest.value = NetworkTables.getValue('/SmartDashboard/Test Autonomous Modes/selected');
+NetworkTables.addKeyListener("/SmartDashboard/Test Autonomous Modes/options", (key, value) => {
+  // Clear previous list
+  while (ui.autoSelectTest.firstChild) {
+    ui.autoSelectTest.removeChild(ui.autoSelectTest.firstChild);
+  }
+  // Make an option for each autonomous mode and put it in the selector
+  for (i = 0; i < value.length; i++) {
+    var option = document.createElement("option");
+    option.innerHTML = value[i];
+    ui.autoSelectTest.appendChild(option);
+  }
+  // Set value to the already-selected mode. If there is none, nothing will happen.
+  ui.autoSelectTest.value = NetworkTables.getValue("/SmartDashboard/Test Autonomous Modes/selected");
 });
 
-NetworkTables.addKeyListener('/SmartDashboard/Test Autonomous Modes/selected', (key, value) => {
-    ui.autoSelectTest.value = value;
+NetworkTables.addKeyListener("/SmartDashboard/Test Autonomous Modes/selected", (key, value) => {
+  ui.autoSelectTest.value = value;
 });
 
 // Update NetworkTables when autonomous selector is changed
 ui.autoSelectTest.onchange = function() {
-	NetworkTables.putValue('/SmartDashboard/Test Autonomous Modes/selected', this.value);
+  NetworkTables.putValue("/SmartDashboard/Test Autonomous Modes/selected", this.value);
   console.log(this.value);
 };
 
@@ -277,9 +277,9 @@ drawRobot();
 // method that changes the ui based on the corresponding alliance
 function drawAllianceUI() {
   if (testIfRed) {
-    ui.theme.link.href = 'css/' + 'red' + '.css';
+    ui.theme.link.href = "css/" + "red" + ".css";
   } else {
-    ui.theme.link.href = 'css/' + 'blue' + '.css';
+    ui.theme.link.href = "css/" + "blue" + ".css";
   }
 }
 
@@ -332,94 +332,94 @@ function drawRedField() {
 
 
 // Get alliance (boolean)
-NetworkTables.addKeyListener('/FMSInfo/IsRedAlliance', (key, value) => {
-    // Set class active if value is true and unset it if it is false
-    testIfRed = value;
+NetworkTables.addKeyListener("/FMSInfo/IsRedAlliance", (key, value) => {
+  // Set class active if value is true and unset it if it is false
+  testIfRed = value;
 
 
-    drawPowerUpField();
-    drawAllianceUI();
-    offsetValue = 1;
-    timer.style.color = `white`;
+  drawPowerUpField();
+  drawAllianceUI();
+  offsetValue = 1;
+  timer.style.color = `white`;
 });
 
 
 
 
 // Get field information (string)
-NetworkTables.addKeyListener('/FMSInfo/GameSpecificMessage', (key, value) => {
-    // Set class active if value is true and unset it if it is false
-    gameData = value;
+NetworkTables.addKeyListener("/FMSInfo/GameSpecificMessage", (key, value) => {
+  // Set class active if value is true and unset it if it is false
+  gameData = value;
 
-    drawPowerUpField();
+  drawPowerUpField();
 
 });
 
 // Get match start information (boolen)
-NetworkTables.addKeyListener('/StormDashboard/MatchStarted', (key, value) => {
-    // Set class active if value is true and unset it if it is false
-    if (value === true) {
-      offsetValue = 1;
-    }
+NetworkTables.addKeyListener("/StormDashboard/MatchStarted", (key, value) => {
+  // Set class active if value is true and unset it if it is false
+  if (value === true) {
+    offsetValue = 1;
+  }
 
 });
 
 
 
 // Get Gear status (boolean)
-NetworkTables.addKeyListener('/SmartDashboard/StormDashboard/Gear', (key, value) => {
-    // Set class active if value is true and unset it if it is false
-    // kForward = High_Gear
-    if (value === "kReverse") {
-      isLowGear = true;
-    } else {
-      isLowGear = false;
-    }
+NetworkTables.addKeyListener("/SmartDashboard/StormDashboard/Gear", (key, value) => {
+  // Set class active if value is true and unset it if it is false
+  // kForward = High_Gear
+  if (value === "kReverse") {
+    isLowGear = true;
+  } else {
+    isLowGear = false;
+  }
 
-    drawRobot();
+  drawRobot();
 });
 
 // Get PTO status (boolean)
-NetworkTables.addKeyListener('/SmartDashboard/StormDashboard/PTO', (key, value) => {
-    // Set class active if value is true and unset it if it is false
-    // kForward = PTO_Disabled
-    if (value === "kReverse") {
-      isPTO = true;
-    } else {
-      isPTO = false;
-    }
+NetworkTables.addKeyListener("/SmartDashboard/StormDashboard/PTO", (key, value) => {
+  // Set class active if value is true and unset it if it is false
+  // kForward = PTO_Disabled
+  if (value === "kReverse") {
+    isPTO = true;
+  } else {
+    isPTO = false;
+  }
 
-    drawRobot();
+  drawRobot();
 });
 
 // Get Accel toggle (boolean)
-NetworkTables.addKeyListener('/SmartDashboard/StormDashboard/Acceleration', (key, value) => {
-    // Set class active if value is true and unset it if it is false
-    if (value) {
-      isAcceleration = true;
-    } else {
-      isAcceleration = false;
-    }
+NetworkTables.addKeyListener("/SmartDashboard/StormDashboard/Acceleration", (key, value) => {
+  // Set class active if value is true and unset it if it is false
+  if (value) {
+    isAcceleration = true;
+  } else {
+    isAcceleration = false;
+  }
 
-    drawRobot();
+  drawRobot();
 });
 
 // Get Arm position (boooooolean)
-NetworkTables.addKeyListener('/SmartDashboard/StormDashboard/Arm', (key, value) => {
-    // Set class active if value is true and unset it if it is false
-    // kForward = Arm_Up_Final
-    if (value === "kReverse") {
-      isArmDown = true;
-    } else {
-      isArmDown = false;
-    }
+NetworkTables.addKeyListener("/SmartDashboard/StormDashboard/Arm", (key, value) => {
+  // Set class active if value is true and unset it if it is false
+  // kForward = Arm_Up_Final
+  if (value === "kReverse") {
+    isArmDown = true;
+  } else {
+    isArmDown = false;
+  }
 
-    drawRobot();
+  drawRobot();
 });
 
 // Error catcher
-addEventListener('error',(ev)=>{
-    ipc.send('windowError',ev);
+addEventListener("error",(ev)=>{
+  ipc.send("windowError",ev);
 });
 
 
