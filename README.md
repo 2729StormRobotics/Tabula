@@ -16,7 +16,7 @@
 [![SonarCloud Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Tabula&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=Tabula)
 [![SonarCloud Code Smells](https://sonarcloud.io/api/project_badges/measure?project=Tabula&metric=code_smells)](https://sonarcloud.io/dashboard?id=Tabula)
 
-STORM Dashboard is team 2729's implementation of FRCDashboard. Some changes have been made to the overall structure in an overall attempt to make the dashboard more accessible to newer teams or students that don't know JavaScript/HTML.
+STORM Dashboard is team 2729's implementation of FRCDashboard. Some changes have been made to the overall structure in an attempt to make the dashboard more accessible to newer teams or students that don't know JavaScript/HTML.
 
 ## Setup and Build
 
