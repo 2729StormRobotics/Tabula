@@ -1,6 +1,14 @@
 {
   "extends": [
-    "eslint:recommended"
+    "eslint:recommended",
+    "plugin:node/recommended",
+    "plugin:promise/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
+  "plugins": [
+    "promise",
+    "import"
   ],
   "env": {
     "browser": true,
@@ -20,7 +28,6 @@
         "allowTemplateLiterals": true,
         "avoidEscape": true
       }
-    ],
-    "no-console": "off"
+    ]
   }
 }
