@@ -33,6 +33,6 @@
   "dependencies": {
     "electron-store": "^4.0.0",
     "wpilib-nt-client": "^1.7.1",
-    "yarn": "^1.16.0"
+    "yarn": "^1.21.1"
   }
 }
