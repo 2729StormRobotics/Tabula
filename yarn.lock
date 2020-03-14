@@ -2138,10 +2138,10 @@ word-wrap@~1.2.3:
   resolved "https://registry.yarnpkg.com/word-wrap/-/word-wrap-1.2.3.tgz#610636f6b1f703891bd34771ccb17fb93b47079c"
   integrity sha512-Hz/mrNwitNRh/HUAtM/VT/5VH+ygD6DV7mYKZAtHOrbs8U7lvPS6xf7EJKMF0uW1KJCl0H701g3ZGus+muE5vQ==
 
-wpilib-nt-client@^1.7.1:
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/wpilib-nt-client/-/wpilib-nt-client-1.7.1.tgz#a85945bb3d2030821f0d94c03924a95ce8e6dcea"
-  integrity sha512-ITr7rsiDk4VltPc0R7fAVTDoKff3KpYyUdoktuBCMZ5QNxQV0984YTY7Phxi2DPbTHXUOqoSHoD47s7rBDcCYg==
+wpilib-nt-client@^1.7.2:
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/wpilib-nt-client/-/wpilib-nt-client-1.7.2.tgz#6b3b54c738eb38be6b53b0f7ed6e5c578ccd8f3a"
+  integrity sha512-TpN3XAzJNcyHf6Ak3cTG09xmbSauloKkr9pEMeoaZ8EfrN8t/UapV48YONBBZhF8+RnJ+nk+Y3cC6NwM3KP33g==
   dependencies:
     ieee754 "^1.1.8"
 
